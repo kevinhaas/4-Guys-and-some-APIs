@@ -20,9 +20,9 @@ Requirements
 --------------------
 1. Must Contain at least 2 Apis - Jambase, Twitter & Spotify. Possible 3rd party auth, Archive.org or Youtube
 
-2. One New library or tech - jQueryUI
+2. One New library or tech - jQuery UI
 
-3. Polished Front End - use Jquery UI and make it feel fluid with info tailored for the user
+3. Polished Front End - use jQuery UI and make it feel fluid with info tailored for the user
 
 4. Firebase - For user accounts and search history
 
