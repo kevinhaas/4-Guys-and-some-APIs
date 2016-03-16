@@ -2,7 +2,7 @@ Week 8 Project
 ©2016 4 Guys and Some APIs
 v1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                          		  Show Search
+                                 Show Search
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                              \        8.1        /
                               \ ~~~~~~~~~~~~~~~ /
@@ -18,7 +18,7 @@ Concept
 
 Requirements
 --------------------
-1. Must Contain at least 2 Apis - Jambase, Twitter & Spotify. Possible 3rd party auth, Archive.org or Youtube
+1. Must Contain at least 2 Apis - Jambase, Twitter, Spotify and OAuth
 
 2. One New library or tech - jQuery UI
 
@@ -26,7 +26,7 @@ Requirements
 
 4. Firebase - For user accounts and search history
 
-5. Use tables and columns - for results and maybe trending?
+5. Use tables and columns - For results and maybe trending?
 
 6. Ensure mobile responsiveness with bootstrap and media queries 
 
