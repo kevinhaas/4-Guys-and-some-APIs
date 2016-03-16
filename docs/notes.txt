@@ -1,0 +1,50 @@
+Week 8 Project
+©2016 4 Guys and Some APIs
+v1.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                          		  Show Search
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             \        8.1        /
+                              \ ~~~~~~~~~~~~~~~ /
+                               \     03-15     /
+                                ~~~~~~~~~~~~~~~
+Concept
+--------------------
+- Allow users to search for local music by zipcode, artist, venue or specific date range
+
+- Tailor the site to the users serach criteria and history
+	~ Spotify results for the artist and related artists
+	~ Tweets related to the artist
+
+Requirements
+--------------------
+1. Must Contain at least 2 Apis - Jambase, Twitter & Spotify. Possible 3rd party auth, Archive.org or Youtube
+
+2. One New library or tech - jQueryUI
+
+3. Polished Front End - use Jquery UI and make it feel fluid with info tailored for the user
+
+4. Firebase - For user accounts and search history
+
+5. Use tables and columns - for results and maybe trending?
+
+6. Ensure mobile responsiveness with bootstrap and media queries 
+
+Ideas
+--------------------
+- 3rd party auth comment section
+
+- previous searches
+
+- change theme button on the bottom. dark/light theme?
+
+- button to purchase tickets to show. link to venue site page.
+
+- poll/feedback on the bottom or on a seperate page?
+
+- nav bar with site info section inlcuding APIs used and links to the git repo
+
+- credits page
+
+- welcome back user message. make it into a homepage?
+
