@@ -22,7 +22,7 @@ Requirements
 
 2. One New library or tech - jQuery UI
 
-3. Polished Front End - use jQuery UI and make it feel fluid with info tailored for the user
+3. Polished Front End - Use jQuery UI and make it feel fluid with info tailored to the user
 
 4. Firebase - For user accounts and search history
 
