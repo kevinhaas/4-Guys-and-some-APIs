@@ -112,6 +112,11 @@ h1,h2,h3,h4,h5,h6 {
 		.relatedTab:hover{
 			cursor: pointer;
 		}
+		.relatedTab{
+			border-right-width: 2px;
+			border-color: gray;
+			border-style: solid;
+		}
 		#spotifyDiv {
 			border-radius: 5px;
 			border-color: gray;
@@ -119,11 +124,11 @@ h1,h2,h3,h4,h5,h6 {
 		}
 		#spotResults{
 			overflow-y: scroll;
-			max-height: 500px;
+			max-height: 395px;
 		}
 		#artistDropDown{
 			position: absolute;
-			top: 102px;
+			top: 144px;
 			min-width: 330px;
 			border-radius: 5px;
 			border-color: #337ab7;
@@ -134,6 +139,31 @@ h1,h2,h3,h4,h5,h6 {
 		.dropDownItem:hover{
 			background-color: white;
 			cursor: pointer;
+		}
+		#submit{
+			margin-top: 35px;
+		}
+		.mainBandImage{
+			max-height: 340px;
+			max-width: 340px;
+			padding: 15px;
+		}
+		#bandStuff{
+			border-radius: 10px;
+			border-style: solid;
+			border-color: gray;
+			border-width: 2px;
+			height: 483px;
+		}
+		.mainBandHeader{
+			text-align: center;
+			font-family: 'Righteous', cursive;
+			padding: 15px;
+			background-color: #337ab7;
+			color: white;
+			font-size: 40px;
+			border-style: solid;
+			border-width: 0px 0px 3px 0px;
 		}
 		.spotRes{
 			background-color: #337ab7;
@@ -151,4 +181,9 @@ h1,h2,h3,h4,h5,h6 {
 		#resultDiv{
 			max-height: 600px;
 			overflow-y: scroll;
+		}
+		@media screen and (max-width: 1200px){
+			.badge{
+				display: none;
+			}
 		}
