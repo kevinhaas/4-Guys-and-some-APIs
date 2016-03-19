@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js"></script>
-
-    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/master/dist/oauth.min.js"></script>
-
-    <style>
-        img:hover{
-            cursor: pointer;
-        }
-    </style>
-
-</head>
-<body>
-
-<script>
     "use strict";
     //chatbox
     var chatbase = new Firebase("https://ek1.firebaseio.com/Chat");
@@ -69,6 +42,9 @@
                 .append(authelement)
                 .append($("<span/>").text(":"))
                 .append($("<span/>").text(childSnapshot.val().message)));
+        var chatBox = $("#chatbox");
+
+        chatBox[0].scrollTop = chatBox[0].scrollHeight;
     });
 
     //For calculating number of users online
@@ -133,34 +109,10 @@
                 });
     }
 
-</script>
-<div id="chatbox-container" style="border:thin grey solid; height:500px; width:650px; border-radius: 20px 20px 20px 20px; padding:10px 10px 10px 10px;">
-    <div id="chatbox" style="overflow-y:scroll; height:400px; width:100%; word-wrap: break-word;"></div>
-    <div id="chatbox-input-container" style="display:flex; font-size: 18px;">
-        <span id="username" style="font-weight:bold;">Anonymous</span>
-        <sup><a id="authentication"></a></sup>
-        <button onclick="submitChatMessage();">Send</button>
-        <input id="chatmessage" type="text" maxlength="200" placeholder="Chat with other music aficionados" style="width:100%; font-size: 18px"/>
-        <a href="#" style="font-size: small; text-decoration: none;" onclick="usernamedialog();">(Set Name)</a>
-    </div>
-    <div>There are <span id="numberofusers">1</span> users online now.</div>
-</div>
-<div id="dialog" title="Set username" style="display:none">
-    <p>Please enter your username.</p>
-    <div id="dialogerror"></div>
-    <div style="display: flex">
-        <input id="usernameset"/>
-        <button onclick="setusername($('#usernameset').val());" id="seturnamebutton">Ok</button>
-    </div>
-    <div style="font-size:18px; text-align: center">OR</div>
-    <div>
-        <span>Login in with:</span>
-        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="32" height="32" onclick="twitter();" title="Login with Twitter!"/>
-    </div>
-</div>
 
-<script>
-    "use strict";
+// poll box
+
+"use strict";
     //voting part
     var votebase = new Firebase("https://ek1.firebaseio.com/Poll");
 
@@ -211,23 +163,3 @@
 
         });
     }
-</script>
-<div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; bottom:0; right:0; height:100px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
-    <div style="float:right; font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
-    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
-    <div style="display:flex; justify-content: center;">
-        <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
-        <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
-    </div>
-</div>
-<div id="poll-dialog" title="Thanks for voting!" style="display:none">
-    <div style="text-align: center;">We appreciate your feedback!</div>
-    <div style="display:flex; justify-content: center;">
-        <canvas id="pollChart" width="200" height="200"/>
-    </div>
-    <div style="float:right;">
-        <button onclick="$('#poll-dialog').dialog('close');">OK</button>
-    </div>
-</div>
-</body>
-</html>

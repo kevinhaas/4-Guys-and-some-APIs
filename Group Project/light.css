@@ -1,0 +1,81 @@
+html, body {
+  height: 100%;
+}
+
+/*Wrapper*/
+.Header {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+/*Headline*/
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font: 70px Helvetica, Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+/*h2:after {
+  content: " On"
+}*/
+
+
+.last {
+  padding-right: 0;
+}
+
+.features:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*Background Image*/
+body {
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("dark.png") ;
+}
+
+/*Light Switch*/
+label {
+  display: block;
+  height: 25px;
+  width: 100px;
+  background: #eee;
+  text-align: center;
+  font: 14px/25px Helvetica, Arial, sans-serif;
+  margin: 20px 0;
+  position: fixed;
+}
+
+label:hover {
+  background: #ddca7e;
+  color: #fff;
+  cursor: pointer;
+}
+
+input#lightswitch {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+
+/*Switched Off*/
+
+
+input#lightswitch:checked + .main h2 {
+  color: #ddca7e;
+}
+
+/*input#lightswitch:checked + .main h2:after {
+  content: " Off"
+}*/
+
+input#lightswitch:checked + .main p {
+  color: #aaa;
+} 
