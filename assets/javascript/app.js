@@ -175,7 +175,7 @@ jQuery(document).ready(function(){
         $("#searchContainer").attr("style", "display: initial");
     });
     $("body").on("click", ".buyTixBtn", function(){
-        window.location.href($(this).data("url"));
+        window.location.href = $(this).data("url");
     });
 });
 
