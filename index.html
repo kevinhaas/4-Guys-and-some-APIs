@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Show Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    
+<div class="wrapper">
+    <div class="container">
+        
+<!-- top title -->
+        <div class="jumbotron" id="title">
+            <div class="container">
+                <h1>Show Search</h1>
+            </div>
+        </div>
+ 
+<!-- search box area -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default" id="searchDiv">
+                    <div class="panel-heading">
+                          <h3 class="panel-title" id="searchTitle">Search For Concerts</h3>
+                    </div>
+                    <div class="panel-body">
+                            
+                            <label for="artistInput" class="">Artist:</label>
+                            <div id="artistInputDiv" style="">
+                            <input type="text" name="" id="artistInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <div id="artistDropDown" style="display: none"></div>
+                          </div>
+                          <label for="zipInput" class="">Zip Code:</label>
+                          <input type="text" name="" id="zipInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <label for="input-id" class="">Radius:</label>
+                          <input type="text" name="" id="radiusInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <label for="input-id" class="">Venue:</label>
+                          <input type="text" name="" id="venueInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <label for="input-id" class="">Start Date:</label>
+                          <input type="date" name="" id="startDateInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <label for="input-id" class="">End Date:</label>
+                          <input type="date" name="" id="endDateInput" class="form-control inputBox" value="" required="required" pattern="" title="">
+                          <button class="btn btn-primary" id="submit">Submit</button>
+                          <button class="btn btn-primary" id="clearBtn">Clear</button>
+                    </div>
+                </div>
+            </div>
+            
+<!-- results on right of search box -->
+            <div class="col-lg-4">
+            <div id="resultDiv">
+                <div id="autoName"></div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>State</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="tableBody">
+                        
+                    </tbody>
+                    
+                </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="panel panel-default" id="spotifyDiv">
+                    <div class="panel-heading">
+                          <h3 class="panel-title" id="searchDivTitle">Related </h3>
+                    </div>
+                        <ul class="nav nav-pills" id="selectRelated" role="tablist">
+                            <li role="presentation" data-div="spotArtists" class="active relatedTab"><a>Artists <span class="badge" id="artistsBadge"></span></a></li>
+                            <li role="presentation" data-div="relatedShows" class="relatedTab"><a>Shows<span class="badge" id="showsBadge"></span></a></li>
+                            <li role="presentation" data-div="topTracks" class="relatedTab"><a>Top Tracks <span class="badge" id="topBadge"></span></a></li>
+                        </ul>
+                    <div id="spotResults">
+                        <div id="spotArtists" class="tabDisplay"></div>
+                        <div id="relatedShows" style="display: none" class="tabDisplay">
+                            <table class="table table-bordered table-responsive table-striped table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>Artist</th>
+                                      <th>Location</th>
+                                      <th>Date</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="relatedShowBody">
+                              </tbody>
+                            </table></div>
+                        <div id="topTracks" style="display: none" class="tabDisplay"></div>
+                    </div>
+                </div>
+            </div>
+            
+
+<!-- end of row div for search box area line25 -->
+        </div>       
+
+<!-- results under search box -->
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>Artist Info</th>
+                            <th>Buy Tix</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>   
+        
+        <div class="row">
+	        <div class="col-lg-4">
+	            <div class="panel panel-default" id="spotifyDiv">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title" id="searchDivTitle">Chat</h3>
+	                </div>
+	            <div class="panel-body" id="results">
+	                        Messages
+	                </div>
+	            </div>
+	        </div>
+        </div>   
+
+    </div>
+</div>
+    
+
+
+    
+    
+    
+<!-- start of scripts -->
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+    
+</body>
+</html>
