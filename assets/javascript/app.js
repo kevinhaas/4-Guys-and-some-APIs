@@ -4,7 +4,6 @@ jQuery(document).ready(function(){
     var url = "";
     $("#submit").click(function(){
         if($(this).data("target") == "artist" && $("#artistInput").val() != ""){
-            debugger;
             searchByArtist($("#artistInput").val());
         } else if($(this).data("target") == "venue" && $("#venueInput").val() != ""){
             findVenue($("#venueInput").val());
@@ -87,7 +86,7 @@ jQuery(document).ready(function(){
                 $("#spotArtists").html("");
                 $("#artistsBadge").text(response.artists.length)
                 for(var i=0; i<response.artists.length; i++){
-                    $("#spotArtists").append("<div class='spotRes relatedArtist'><div class='thumbnail related'><div class='artistImg'><img src='"+response.artists[i].images[0].url+"' class='img-responsive' style='max-height: 100px; max-width: 100px;'></div><div class='artistTitle'>Artist: <b class='relTitle'>"+response.artists[i].name+"</b><br>Genre: <b class='relTitle'>"+response.artists[i].genres[0]+"</b><br><button data-artist='"+response.artists[i].name+"' class='relatedSearchBtn btn btn-primary'>Search Shows <span class='glyphicon glyphicon-search' aria-hidden='true'></span></button></div></div><div>");
+                    $("#spotArtists").append("<div class='spotRes relatedArtist'><div class='thumbnail related'><div class='artistImg'><img src='"+response.artists[i].images[0].url+"' class='img-responsive' style='max-height: 100px; max-width: 100px;'></div><div class='artistTitle'><span class='relTitle'>Artist: </span>"+response.artists[i].name+"<div class='relTitle'>Genre: "+response.artists[i].genres[0]+"</div><br><button data-artist='"+response.artists[i].name+"' class='relatedSearchBtn btn btn-primary'><span class='searchBtnText'>Search Shows </span><span class='glyphicon glyphicon-search' aria-hidden='true'></span></button></div></div><div>");
                 }
             });
             url = "https://api.spotify.com/v1/artists/"+id+"/top-tracks?country=US"

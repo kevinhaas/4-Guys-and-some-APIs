@@ -112,11 +112,6 @@ h1,h2,h3,h4,h5,h6 {
 		.relatedTab:hover{
 			cursor: pointer;
 		}
-		.relatedTab{
-			border-right-width: 2px;
-			border-color: gray;
-			border-style: solid;
-		}
 		#spotifyDiv {
 			border-radius: 5px;
 			border-color: gray;
@@ -147,6 +142,7 @@ h1,h2,h3,h4,h5,h6 {
 			max-height: 340px;
 			max-width: 340px;
 			padding: 15px;
+			float: left;
 		}
 		#bandStuff{
 			border-radius: 10px;
@@ -174,16 +170,43 @@ h1,h2,h3,h4,h5,h6 {
 		}
 		#selectRelated{
 			text-align: center;
-			border-width: 2px 0px 2px 0px;
-			border-style: solid;
-			border-color: gray;
 		}
 		#resultDiv{
 			max-height: 600px;
 			overflow-y: scroll;
 		}
 		@media screen and (max-width: 1200px){
+			#spotifyDiv{
+				width: 320px;
+			}
 			.badge{
 				display: none;
+			}
+			.mainBandImage{
+				max-height: 300px;
+				max-width: 3000px;
+			}
+			#spotResults{
+				max-height: 345px;
+			}
+			#bandStuff{
+				height: 423px;
+			}
+		}
+		@media screen and (max-width: 767px){
+			#spotifyDiv{
+				display: none;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			.mainBandImage{
+				max-height: 240px;
+				max-width: 240px;
+			}
+			#spotResults{
+				max-height: 310px;
+			}
+			#bandStuff{
+				height: 390px;
 			}
 		}
