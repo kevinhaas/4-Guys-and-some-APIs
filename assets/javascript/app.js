@@ -129,7 +129,7 @@ jQuery(document).ready(function(){
             success: function(data){
                 console.log(data);
                 $("#tableBody").html("");
-                for(var i=0; i<10; i++){
+                for(var i=0; i<data.length; i++){
                     var ticketSpot;
                     if(data[i].ticket_status == "available"){
                         ticketSpot = "<button class='btn btn-success buyTixBtn' data-url='"+data[i].ticket_url+"'>Buy</button>";
@@ -146,6 +146,7 @@ jQuery(document).ready(function(){
     }
     $("body").on("click", ".relatedSearchBtn", function(){
         searchByArtist($(this).data("artist"));
+        
     }); 
     $(".relatedTab").click(function(){
         $(".relatedTab").removeClass("active");
@@ -169,6 +170,10 @@ jQuery(document).ready(function(){
     function findVenue(){
 
     };
+    $("body").on("click", ".dropDownItem", function(){
+        searchByArtist($(this).data("artist"));
+        $("#artistDropDown").attr("style", "display: none");
+    });
     $("body").on("click", ".backToSearch", function(){
         $("#bandInfo").attr("style", "display: none");
         $("#searchContainer").attr("style", "display: initial");
