@@ -148,10 +148,10 @@ html, body {
 		}
 		#artistDropDown{
 			position: absolute;
-			top: 204px;
+			top: 187px;
 			min-width: 350px;
 			border-radius: 5px;
-			border-color: #337ab7;
+			border-color: purple;
 			border-style: solid;
 			border-width: 0px 2px 2px 2px;
 			z-index: 10;
