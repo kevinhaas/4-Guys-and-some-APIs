@@ -40,7 +40,7 @@
                 </div>
                 <div class="panel-body blackBack grayText">
                   <form autocomplete="off">  
-                    <label for="artistInput" class="inputLabel artistSI">Artist:</label>
+                    <label for="artistInput" class="inputLabel artistSI"><span id="required" style="display: none">* Required </span>Artist:</label>
                     <div id="artistInputDiv" style="">
                       <input type="text" autocomplete="off" id="artistInput" class="form-control inputBox artistSI" required="required">
                       <div id="artistDropDown" style="display: none"></div>
@@ -136,6 +136,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
+            <div id="tourDateScreen">
             <div id="resultDiv" style="display: none" class="blackBack">
               <table class="table table-bordered table-hover">
                   <thead class="purpleBack">
@@ -147,14 +148,13 @@
                           <th>Tickets</th>
                       </tr>
                   </thead>
-                  
                   <tbody id="tableBody">
-                      
+
                   </tbody>
-                  
               </table>
             </div>
           </div>
+          <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span></span></div>
         </div> 
       </div>
     </div>

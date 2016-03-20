@@ -93,11 +93,6 @@ html, body {
     width: 50%;
 }
 
-#resultDiv {
-	max-height: 500px;
-	overflow-y: scroll; 
-}
-
 /* robs css */
 		.related{
 			height: 110px;
@@ -145,6 +140,10 @@ html, body {
 		#spotResults{
 			overflow-y: scroll;
 			max-height: 395px;
+		}
+		#required {
+			color: red;
+			font-size: 14px;
 		}
 		#artistDropDown{
 			position: absolute;
@@ -254,9 +253,17 @@ html, body {
 			border-width: 2px;
 			border-style: solid;
 		}
-		#resultDiv{
-			max-height: 500px;
-			overflow-y: scroll;
+		#tourDateScreen{
+			max-height: 340px;
+			overflow-y: hidden;
+		}
+		.pagesText{
+			padding-left: 20px;
+		}
+		.pageIndexBtn{
+			padding: 5px;
+			background-color: purple;
+			color: white;
 		}
 		.spotRes{
 			background-image: url("../../purple.jpg");
@@ -307,10 +314,6 @@ html, body {
 		#selectSearch{
 			margin: auto;
 			text-align: center;
-		}
-		#resultDiv{
-			max-height: 600px;
-			overflow-y: scroll;
 		}
 		@media screen and (max-width: 1200px){
 			#spotifyDiv{

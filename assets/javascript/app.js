@@ -2,20 +2,27 @@
 jQuery(document).ready(function(){
     var id = "";
     var url = "";
+    $("#artistInput").focus();
+    $("#artistInput").select();
     $("#submit").click(function(){
         if($(this).data("target") == "artist" && $("#artistInput").val() != ""){
-            searchByArtist($("#artistInput").val());
+            searchByArtist($("#artistInput").val(), $("#startDateInput").val(), $("#endDateInput").val());
         } else if($(this).data("target") == "venue" && $("#venueInput").val() != ""){
             findVenue($("#venueInput").val());
+        } else {
+            return;
         }
+        console.log($("#startDateInput").val())
         return false;
+
     });
-    function searchByArtist(band){
+    function searchByArtist(band, start, end){
+        if(band == "") return;
         $("#topTracks").html("");
         $("#relatedShowBody").html("");
 
         findArtist(band);
-        getTourDates(band);
+        getTourDates(band, start, end);
         $("#resultDiv").attr("style", "display: initial");
         setTimeout(function(){
             $(".inputBox").val("")
@@ -26,9 +33,9 @@ jQuery(document).ready(function(){
         $(window).keyup(function(event) {
             if(event.keyCode == 13){
                 if(keyPress == 0){
-                    searchByArtist($("#artistInput").val());
+                    searchByArtist($("#artistInput").val(), $("#startDateInput").val(), $("#endDateInput").val());
                 } else {
-                    searchByArtist($("#autoArt"+keyPress).data("artist"));
+                    searchByArtist($("#autoArt"+keyPress).data("artist"), $("#startDateInput").val(), $("#endDateInput").val());
                 };
                 $("#artistDropDown").attr("style", "display: none");
             } else if(event.keyCode == 40){
@@ -127,8 +134,11 @@ jQuery(document).ready(function(){
         });
     };
 
-    function getTourDates(artist){
-        var bandTownurl = "https://crossorigin.me/https://api.bandsintown.com/artists/"+artist+"/events.json?callback=?&app_id=muskick3"
+    function getTourDates(artist, start, end){
+        var date = "";
+        if(start != "" && end != "") date = "date="+start+","+end+"&";
+        if(start != "" && end == "") date = "date="+start+"&";
+        var bandTownurl = "https://crossorigin.me/https://api.bandsintown.com/artists/"+artist+"/events.json?"+date+"callback=?&app_id=muskick3";
         console.log(bandTownurl);
         $.ajax({
             type: 'GET',
@@ -137,15 +147,35 @@ jQuery(document).ready(function(){
             success: function(data){
                 console.log(data);
                 $("#tableBody").html("");
-                for(var i=0; i<data.length; i++){
+                var concertNum = data.length;
+                var pageNum = (concertNum - (concertNum%5))/5;
+                if(concertNum%5 != 0) pageNum++;
+                var page = 1;
+                for(var i=0; i<concertNum; i++){
                     var ticketSpot;
+                    console.log(page);
+                    if(i != 0 && i%5 == 0) page++;
                     if(data[i].ticket_status == "available"){
                         ticketSpot = "<button class='btn btn-info buyTixBtn buttonText' data-url='"+data[i].ticket_url+"'>Buy</button>";
                     } else {
                         ticketSpot = "Sold Out";
                     }
-                    $("#tableBody").append("<tr><td>"+data[i].datetime.substring(5, 7)+"/"+data[i].datetime.substring(8, 10)+"/"+data[i].datetime.substring(2, 4)+"</td><td>"+data[i].venue.name+"</td><td>"+data[i].venue.region+"</td><td>"+data[i].venue.city+"</td><td>"+ticketSpot+"</td></tr>");
-                }
+                    debugger
+                    $("#tableBody").append("<tr class='pageNum"+page+" tourPage'><td>"+data[i].datetime.substring(5, 7)+"/"+data[i].datetime.substring(8, 10)+"/"+data[i].datetime.substring(2, 4)+"</td><td>"+data[i].venue.name+"</td><td>"+data[i].venue.region+"</td><td>"+data[i].venue.city+"</td><td>"+ticketSpot+"</td></tr>");
+                };
+                $("#pageDirectory").attr("style", "display: none");
+                $(".tourPage").attr("style", "display: none");
+                $(".pageNum1").attr("style", "");
+                var pages = $(".pageNum1");
+                console.log(pages);
+                $("#tableBody").append(pages);
+                if(pageNum > 1){
+                    $("#pageDirectory").attr("style", "display: initial");
+                    $("#pageButtons").html("");
+                    for(var j=1; j<=pageNum; j++){
+                        $("#pageButtons").append("<span><button class='btn btn info pageIndexBtn' data-page='"+j+"'>"+j+"</button></span>");
+                    };
+                };
             },
             error: function(errorObj){
                 console.log(errorObj);
@@ -153,7 +183,7 @@ jQuery(document).ready(function(){
         });
     }
     $("body").on("click", ".relatedArtist", function(){
-        searchByArtist($(this).data("artist"));
+        searchByArtist($(this).data("artist"), $("#startDateInput").val(), $("#endDateInput").val());
         
     }); 
     $(".relatedTab").click(function(){
@@ -206,6 +236,12 @@ jQuery(document).ready(function(){
     });
     $("#spotifyConnect").click(function(){
         window.location.href = $(this).data("url");
+    });
+    $("body").on("click", ".pageIndexBtn", function(){
+        $(".tourPage").attr("style", "display: none");
+        var page = $(".pageNum"+$(this).data("page"));
+        page.attr("style", "");
+        $("#tableBody").append(page);
     });
 });
 
