@@ -215,7 +215,7 @@ html, body {
 			color: white;
 			font-family: 'Righteous', cursive;
 			font-size: 24px;
-			margin-bottom: 5px;
+			padding: 5px;
 			text-align: center;
 		}
 		.relatedTab{
