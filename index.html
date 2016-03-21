@@ -170,6 +170,14 @@
               </div>
             </div>
           </div>
+          <div id="signInBox" class="resultSection">
+              <!--
+
+            Sign-in box here?
+
+
+              -->
+          </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
@@ -208,6 +216,32 @@
           </div>
         </div> 
       </div>
+      <div class="row"><div class="col-md-12 col-sm-12 col-lg-12">
+        <div id="chatbox-container" style="border:thin grey solid; min-height:300px; max-height: 500px; border-radius: 20px 20px 20px 20px; padding:10px 10px 10px 10px;" class="purpleBack backSwitch">
+    <div id="chatbox" style="overflow-y:scroll; min-height:200px; width:100%; word-wrap: break-word;" class="blackBack"></div>
+    <div id="chatbox-input-container" style="display:flex; font-size: 18px;">
+        <span id="username" style="font-weight:bold;">Anonymous</span>
+        <sup><a id="authentication"></a></sup>
+        <button onclick="submitChatMessage();">Send</button>
+        <input id="chatmessage" type="text" maxlength="200" placeholder="Chat with other music aficionados" style="color: black; width:100%; font-size: 18px"/>
+        <a href="#" style="font-size: small; text-decoration: none;" onclick="usernamedialog();">(Set Name)</a>
+    </div>
+    <div>There are <span id="numberofusers">1</span> users online now.</div>
+</div>
+<div id="dialog" title="Set username" style="display:none">
+    <p>Please enter your username.</p>
+    <div id="dialogerror"></div>
+    <div style="display: flex">
+        <input id="usernameset"/>
+        <button onclick="setusername($('#usernameset').val());" id="seturnamebutton">Ok</button>
+    </div>
+    <div style="font-size:18px; text-align: center">OR</div>
+    <div>
+        <span>Login in with:</span>
+        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="32" height="32" onclick="twitter();" title="Login with Twitter!"/>
+    </div>
+</div>
+      </div></div>
     </div>
   </div>
 </body>
