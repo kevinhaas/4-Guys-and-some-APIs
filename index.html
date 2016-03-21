@@ -3,12 +3,10 @@
 <head>
     <title>Show Search</title>
     <meta charset="utf-8">
-    <!-- start of scripts -->
-    <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
-    <script src="assets/javascript/app.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
@@ -17,11 +15,16 @@
 <body>
   <div id="wrapperWrapper">
     <div class="wrapper" style="background-image: url('dark.png');">
+        
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
       <input type="checkbox" id="lightSwitch" data-state="off">
+      
       <div class="mainHeader"></div>
-      <div class="jumbotron" style="visibility: hidden" id="title"></div>
+      <div class="jumbotron" style="visibility: hidden" id="title">
+      </div>
+      
       <div class="container">
+          
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8">
             <div id="searchContainer">
@@ -157,7 +160,74 @@
           <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span></span></div>
         </div> 
       </div>
+      
+      
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div id="chatbox-container">
+            <div id="chatbox"></div>
+            <div id="chatbox-input-container">
+            <span id="username">Anonymous</span>
+            <sup><a id="authentication"></a></sup>
+            <button onclick="submitChatMessage();">Send</button>
+            <input id="chatmessage" type="text" maxlength="200" placeholder="Chat with other music aficionados"/>
+            <a href="#" id="setnamedialog" onclick="usernamedialog();">(Set Name)</a>
+          </div>
+          <div>There are <span id="numberofusers">1</span> users online now.</div>
+          </div>
+        <div id="dialog" title="Set username">
+      <p>Please enter your username.</p>
+      <div id="dialogerror"></div>
+      <div>
+          <input id="usernameset"/>
+          <button onclick="setusername($('#usernameset').val());" id="seturnamebutton">Ok</button>
+      </div>
+      <div id="or">OR</div>
+      <div>
+          <span>Login in with:</span>
+          <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="32" height="32" onclick="twitter();" title="Login with Twitter!"/>
+      </div>
+
+  </div>
+  </div>
+
+
+<div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; bottom:0; right:0; height:100px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
+    <div style="float:right; font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
+    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
+    <div style="display:flex; justify-content: center;">
+        <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
+        <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
+    </div>
+</div>
+<div id="poll-dialog" title="Thanks for voting!" style="display:none">
+    <div style="text-align: center;">We appreciate your feedback!</div>
+    <div style="display:flex; justify-content: center;">
+        <canvas id="pollChart" width="200" height="200"/>
+    </div>
+    <div style="float:right;">
+        <button onclick="$('#poll-dialog').dialog('close');">OK</button>
+    </div>
+</div>
+      
     </div>
   </div>
+  </div>
+  </div>
+
+      
+  
+      <!-- start of scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js"></script>
+    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/master/dist/oauth.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+    <script src="assets/javascript/app2.js" type="text/javascript"></script>
+  
 </body>
 </html>

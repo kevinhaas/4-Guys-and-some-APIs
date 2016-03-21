@@ -93,6 +93,66 @@ html, body {
     width: 50%;
 }
 
+
+/* eugene css*/
+
+#chatbox-container {
+	border:thin grey solid;
+	height:500px; 
+	border-radius: 20px 20px 20px 20px; 
+	padding:10px 10px 10px 10px;
+}
+#chatbox {
+	overflow-y:scroll;
+	height:400px;
+	width:100%; 
+	word-wrap: break-word;
+}
+
+#chatbox-input-container {
+	display:flex; 
+	font-size: 18px
+}
+
+#username {
+	font-weight:bold;
+}
+
+#authentication {
+
+}
+
+#chatmessage {
+	width:100%; 
+	font-size: 18px
+}
+
+#setnamedialog {
+	font-size: small; 
+	text-decoration: none;
+}
+
+#numberofusers {
+
+}
+
+#dialog {
+	display: none;
+}
+
+#or {
+	font-size:18px; 
+	text-align: center
+}
+
+#usernameset {
+
+}
+
+#seturnamebutton {
+
+}
+
 /* robs css */
 		.related{
 			height: 110px;
