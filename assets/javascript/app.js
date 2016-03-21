@@ -28,6 +28,7 @@ jQuery(document).ready(function(){
             $(".inputBox").val("")
         }, 1000);
     };
+    // functions for making the drop down menu while typing for an artist
     $("#artistInput").on("focus", function(){
         keyPress = 0;
         $(window).keyup(artistOnKey);
@@ -54,6 +55,7 @@ jQuery(document).ready(function(){
         } else {
             if(artist.length > 1){
                 keyPress = 0;
+                // sends calls to spotify api with a wildcard (*) to grab most relavant artists 
                 url = "https://api.spotify.com/v1/search?q="+artist+"*&type=artist";
                 $.ajax({url: url, method: "GET"})
                 .done(function(response) { 
@@ -80,6 +82,8 @@ jQuery(document).ready(function(){
             $("#artistDropDown").attr("style", "display: none");
         }, 200); 
     });
+    // call to spotify api for an artist id 
+    // then again with the id for more imformation
     function findArtist(artist){
         url = "https://api.spotify.com/v1/search?q="+artist+"&type=artist";
         $.ajax({url: url, method: "GET"})
@@ -191,6 +195,7 @@ jQuery(document).ready(function(){
         searchByArtist($(this).data("artist"), $("#startDateInput").val(), $("#endDateInput").val());
         
     }); 
+    // tab toggles
     $("body").on("click", ".relatedTab", function(){
         $(".relatedTab").removeClass("active");
         $(this).addClass("active");
@@ -210,6 +215,7 @@ jQuery(document).ready(function(){
         $("."+target+"SI").attr("style", "display: initial");
     });
     $("body").on("click", "#submitVenue", submitVenue);
+    // direct inputs to findVenues
     function submitVenue(){
         var state = $("#stateInput").val();
         var city = $("#cityInput").val();
@@ -236,26 +242,34 @@ jQuery(document).ready(function(){
                     $("#venueTableBody").html("");
                     $("#venueList").css("display", "initial");
                     var venueList = [];
+                    // loop through responses
                     for(var i=0; i<data.length && i<10; i++){
                         var bool = true;
+                        // check if they have a venue not listed already
                         for(var j=0; j<venueList.length; j++){
                             if(data[i].venue.name == venueList[j]) bool = false;
                         };
                         if(bool){
+                            // for each venue i'm sending a $.get to the link they provided for futher imformation in their site not in the response
                             venueList.push(data[i].venue.name);
                             url = "https://crossorigin.me/"+data[i].venue.url;
                             console.log(url)
                             var streetAdd;
                             $.get(url, function(response) {
                                     var $response = $(response);
+                                    // find the element tag with the imformation needed
                                     console.log($response.find('.venue-location').html());
+                                    // store the addresses in a div attribute
                                     $("#addressStorage").append($response.find('.venue-location').html()+",");
                             });
+                            // the rest of the data for the table can be appended from the current response
                             $("#venueTableBody").append("<tr><td>"+data[i].venue.name+"</td><td>"+data[i].venue.city+", "+data[i].venue.region+"</td><td><div id='address"+i+"'></div></td><td><button class='btn btn-info getEventsBtn' data-info='"+data[i].venue.id+"'>Events</button></td></tr>")
                         }
                     };
+                    // set a timeout to assure the prior $.get calls have been finished 
                     var limit = i;
                     setTimeout(function(){
+                        // split the address to extract just the street address and append to table
                         var arr = ($("#addressStorage").html()).split(",");
                         var ind = 0;
                         for(var k=0; k<limit; k++){
@@ -266,7 +280,7 @@ jQuery(document).ready(function(){
                                 ind += 3;
                             }
                         };
-                    }, 4000);
+                    }, 3000);
                 } else {
                     $("#resultInfo").attr("style", "display: initial");
                     $("#resultInfo").html("No Venues found in this area.");
@@ -277,12 +291,14 @@ jQuery(document).ready(function(){
             }
         });
     };
+    // listener for the type ahead responses
     $(document).on("click", ".dropThis", function(){
         debugger;
         var bandName = $(this).data("artist");
         searchByArtist(bandName);
         $("#artistDropDown").attr("style", "display: none");
     });
+    // use backToSearch class for buttons that return the search screen
     $("body").on("click", ".backToSearch", function(){
         $("#pageDirectory").css("display", "none");
         $("#resultInfo").css("display", "none");
@@ -290,9 +306,11 @@ jQuery(document).ready(function(){
         $("#searchContainer").attr("style", "display: initial");
         $(window).unbind("keyup", artistOnKey);
     });
+    // redirect to buy tickets
     $("body").on("click", ".buyTixBtn", function(){
         window.location.href = $(this).data("url");
     });
+    // not the right url yet for spotify
     $("#spotifyConnect").click(function(){
         window.location.href = $(this).data("url");
     });
@@ -302,6 +320,8 @@ jQuery(document).ready(function(){
         page.attr("style", "");
         $("#tableBody").append(page);
     });
+    // light switches
+    // use blackBack or backSwitch to toggle background colors and fonts for the element
     $("#lightSwitch").change(function(){
         if ($(this).prop("checked") == true){
             $(".backSwitch").css("background-image", "url('blue.jpg')");
@@ -321,6 +341,7 @@ jQuery(document).ready(function(){
             // $("#main-header").text("MUSKICK ON");
         }
     });
+    // strobe the light switch
     $("#strobeSwitch").click(function(){
         if($(this).data("state") == "on"){
             clearInterval(strobe);
