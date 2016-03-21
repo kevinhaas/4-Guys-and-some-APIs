@@ -18,12 +18,34 @@
   <div id="wrapperWrapper">
     <div id="addressStorage" style="display: none"></div>
     <div id="artistStorage" style="display: none"></div>
-    <div class="wrapper" style="background-image: url('dark.png');">
+    <div class="wrapper" style="background-image: url('dark.jpg');">
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
       <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
       <div class="mainHeader"></div>
-      <div class="jumbotron" style="visibility: hidden" id="title"></div>
+      
+      <div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
+    <div style="font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
+    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
+    <div style="display:flex; justify-content: center;">
+        <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
+        <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
+    </div>
+</div>
+<div id="poll-dialog" title="Thanks for voting!" style="display:none">
+    <div style="text-align: center;">We appreciate your feedback!</div>
+    <div style="display:flex; justify-content: center;">
+        <canvas id="pollChart" width="200" height="200"/>
+    </div>
+    <div style="float:right;">
+        <button onclick="$('#poll-dialog').dialog('close');">OK</button>
+    </div>
+</div>
       <div class="container">
+      <div class="jumbotron backSwitch" style="height: 220px;background-size: contain; background-image: url('purple.jpg'); border-radius: 20px; border-color: gray; border-style: solid; border-width: 2px" id="title">
+        <div class="row"><div class="col-md-5 col-sm-4 col-lg-4"></div><div class="col-md-4 col-sm-4 col-lg-4">
+        <img class= "" id="muskickHeader" style="border-radius: 20px; border-color: white; padding: 8px; border-style: solid; border-width: 2px" src="label.jpg">
+        </div><div class="col-md-4 col-sm-4 col-lg-4"></div></div>
+      </div>
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8">
             <div id="searchContainer">
@@ -163,7 +185,7 @@
                           <th>Tickets</th>
                       </tr>
                   </thead>
-                  <tbody id="tableBody">
+                  <tbody id="tableBody" class="blackBack">
 
                   </tbody>
               </table>
@@ -179,7 +201,7 @@
                           <th>-</th>
                       </tr>
                   </thead>
-                  <tbody id="venueTableBody">
+                  <tbody id="venueTableBody" class="blackBack">
 
                   </tbody>
               </table>

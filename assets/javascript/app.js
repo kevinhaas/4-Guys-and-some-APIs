@@ -293,16 +293,6 @@ jQuery(document).ready(function(){
     $("body").on("click", ".buyTixBtn", function(){
         window.location.href = $(this).data("url");
     });
-    $("#lightSwitch").click(function(){
-        if ($(this).attr("data-state") == "off"){
-            $(".wrapper").attr("style", "background-image: url('light.jpg')");
-            $(this).attr("data-state", "on");
-            return;
-        } else {
-            $(".wrapper").attr("style", "background-image: url('dark.png')");
-            $(this).attr("data-state", "off");
-        }
-    });
     $("#spotifyConnect").click(function(){
         window.location.href = $(this).data("url");
     });
@@ -315,13 +305,19 @@ jQuery(document).ready(function(){
     $("#lightSwitch").change(function(){
         if ($(this).prop("checked") == true){
             $(".backSwitch").css("background-image", "url('blue.jpg')");
-            $(".blackBack").css("color", "blue");
+            $(".blackBack").css("color", "black");
+            $(".blackBack").css("background-color", "white");
             $(".pageIndexBtn").css("background-color", "blue");
+            $(".wrapper").css("background-image", "url('light.jpg')");
+            $("#muskickHeader").attr("src", "label2.jpg");
             // $("#main-header").text("MUSKICK OFF");
         } else {
             $(".backSwitch").css("background-image", "url('purple.jpg')");
-            $(".blackBack").css("color", "gray");
-            $(".pageIndexBtn").css("background-color", "blue");
+            $(".wrapper").css("background-image", "url('dark.jpg')");
+            $(".blackBack").css("color", "gray");3
+            $(".blackBack").css("background-color", "black");
+            $(".pageIndexBtn").css("background-color", "purple");
+            $("#muskickHeader").attr("src", "label.jpg");
             // $("#main-header").text("MUSKICK ON");
         }
     });
