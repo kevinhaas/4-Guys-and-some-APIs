@@ -20,7 +20,7 @@
     <div id="artistStorage" style="display: none"></div>
     <div class="wrapper" style="background-image: url('dark.png');">
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
-      <input type="checkbox" id="lightSwitch" data-state="off">
+      <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
       <div class="mainHeader"></div>
       <div class="jumbotron" style="visibility: hidden" id="title"></div>
       <div class="container">
@@ -28,15 +28,15 @@
           <div class="col-lg-8 col-md-8 col-sm-8">
             <div id="searchContainer">
               <div class="panel panel-default" id="searchDiv">
-                <div class="purpleBack" id="searchPanel">
+                <div class="purpleBack backSwitch" id="searchPanel">
                   <div class="headerText"> Search Concerts by: </div>
                   <br>
                   <br>
                   <span id="selectSearch">
                     <ul class="nav nav-tabs" role="tablist">
-                      <li role="presentation" data-target="artist" class="active searchTab"><a class="whiteLink">Artist </a></li>
-                      <li role="presentation" data-target="location" class="searchTab"><a class="whiteLink">Location </a></li>
-                      <li role="presentation" data-target="venue" class="searchTab"><a class="whiteLink">Venue </a></li>
+                      <li role="presentation" data-target="artist" class="active searchTab backSwitch"><a class="whiteLink">Artist </a></li>
+                      <li role="presentation" data-target="location" class="searchTab backSwitch"><a class="whiteLink">Location </a></li>
+                      <li role="presentation" data-target="venue" class="searchTab backSwitch"><a class="whiteLink">Venue </a></li>
                     </ul>
                   </span>
                 </div>
@@ -118,22 +118,22 @@
           <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="panel panel-default resultSection" id="spotifyDiv" style="display: none">
               <div style="padding: 5px; background-color: black">
-              <div class="panel-heading purpleBack" style="border-radius: 5px">
+              <div class="panel-heading purpleBack backSwitch" style="border-radius: 5px">
                 <h3 class="panel-title headerText" id="searchDivTitle">Related </h3>
               </div>
               </div>
               <div id="selectRelated">
-                <ul class="nav nav-tabs purpleBack" role="tablist">
-                  <li role="presentation" data-div="spotArtists" class="active relatedTab"><a class="whiteLink">Artists <span class="badge" id="artistsBadge" style="display: none"></span></a></li>
-                  <li role="presentation" data-div="relatedShows" class="relatedTab"><a class="whiteLink">Shows<span class="badge" id="showsBadge"></span></a></li>
-                  <li role="presentation" id="topTracksTab" data-div="topTracks" class="relatedTab"><a class="whiteLink">Top Tracks <span class="badge" id="topBadge" style="display: none"></span></a></li>
+                <ul class="nav nav-tabs purpleBack backSwitch" role="tablist">
+                  <li role="presentation" data-div="spotArtists" class="active relatedTab backSwitch"><a class="whiteLink">Artists <span class="badge" id="artistsBadge" style="display: none"></span></a></li>
+                  <li role="presentation" data-div="relatedShows" class="relatedTab backSwitch"><a class="whiteLink">Shows<span class="badge" id="showsBadge"></span></a></li>
+                  <li role="presentation" id="topTracksTab" data-div="topTracks" class="relatedTab backSwitch"><a class="whiteLink">Top Tracks <span class="badge" id="topBadge" style="display: none"></span></a></li>
                 </ul>
               </div>
               <div id="spotResults" class="blackBack">
                 <div id="spotArtists" class="tabDisplay"></div>
                 <div id="relatedShows" style="display: none" class="tabDisplay">
                   <table class="table table-bordered table-responsive table-hover">
-                    <thead class="purpleBack">
+                    <thead class="purpleBack backSwitch">
                       <tr>
                         <th>Artist</th>
                         <th>Location</th>
@@ -151,15 +151,15 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
+            <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span><span id="pageDirTitle" class="grayText">Tour Dates</span></span></div>
             <div id="tourDateScreen">
             <div id="resultDiv" style="display: none" class="blackBack resultSection">
               <table class="table table-bordered table-hover">
-                  <thead class="purpleBack">
+                  <thead class="purpleBack backSwitch">
                       <tr>
                           <th>Date</th>
                           <th>Venue</th>
-                          <th>State</th>
-                          <th>City</th>
+                          <th>Location</th>
                           <th>Tickets</th>
                       </tr>
                   </thead>
@@ -169,10 +169,9 @@
               </table>
             </div>
           </div>
-          <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span></span></div>
           <div class="resultSection blackBack" id="venueList" style="display: none">
             <table class="table table-bordered table-hover">
-                  <thead class="purpleBack">
+                  <thead class="purpleBack backSwitch">
                       <tr>
                           <th>Name</th>
                           <th>City, State</th>

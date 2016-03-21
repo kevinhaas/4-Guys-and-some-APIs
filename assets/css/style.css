@@ -218,6 +218,7 @@ html, body {
 			padding: 5px;
 			text-align: center;
 		}
+
 		.relatedTab{
 			background-image: url("../../purple.jpg");
 			background-size: cover;
@@ -318,6 +319,10 @@ html, body {
 		#selectSearch{
 			margin: auto;
 			text-align: center;
+		}
+		#pageDirTitle{
+			font-size: 24px;
+			margin-left: 35px;
 		}
 		@media screen and (max-width: 1200px){
 			#spotifyDiv{

@@ -89,7 +89,7 @@ jQuery(document).ready(function(){
                 $("#bandInfo").attr("style", "display: initial");
                 $("#searchContainer").attr("style", "display: none");
                 $("#bandImage").html("<img class='mainBandImage img-responsive' style='margin-bottom: 40px' src='"+response.artists.items[0].images[0].url+"''>");
-                $("#bandHeader").html("<h2 class='mainBandHeader'>"+response.artists.items[0].name+"</h2>");
+                $("#bandHeader").html("<h2 class='mainBandHeader backSwitch'>"+response.artists.items[0].name+"</h2>");
                 $("#bandGenreInfo").html(response.artists.items[0].genres[0]);
                 $("#spotifyConnect").data("url", response.artists.items[0].href);
                 $("#bandFollowers").html(response.artists.items[0].followers.total);
@@ -101,7 +101,7 @@ jQuery(document).ready(function(){
                 $("#spotArtists").html("");
                 $("#artistsBadge").text(response.artists.length)
                 for(var i=0; i<response.artists.length; i++){
-                    $("#spotArtists").append("<div class='spotRes relatedArtist' data-artist='"+response.artists[i].name+"'><div class='thumbnail related'><div class='artistImg'><img src='"+response.artists[i].images[0].url+"' style='max-height: 100px; max-width: 100px;'></div><div class='artistTitle'><span class='relTitle'>Artist: </span>"+response.artists[i].name+"<div class='relTitle'>Genre: "+response.artists[i].genres[0]+"</div></div></div></div>");
+                    $("#spotArtists").append("<div class='spotRes backSwitch relatedArtist' data-artist='"+response.artists[i].name+"'><div class='thumbnail related'><div class='artistImg'><img src='"+response.artists[i].images[0].url+"' style='max-height: 100px; max-width: 100px;'></div><div class='artistTitle'><span class='relTitle'>Artist: </span>"+response.artists[i].name+"<div class='relTitle'>Genre: "+response.artists[i].genres[0]+"</div></div></div></div>");
                 }
             });
             url = "https://api.spotify.com/v1/artists/"+id+"/top-tracks?country=US";
@@ -164,7 +164,7 @@ jQuery(document).ready(function(){
                         } else {
                             ticketSpot = "Sold Out";
                         };
-                        $("#tableBody").append("<tr class='pageNum"+page+" tourPage'><td>"+data[i].datetime.substring(5, 7)+"/"+data[i].datetime.substring(8, 10)+"/"+data[i].datetime.substring(2, 4)+"</td><td>"+data[i].venue.name+"</td><td>"+data[i].venue.region+"</td><td>"+data[i].venue.city+"</td><td>"+ticketSpot+"</td></tr>");
+                        $("#tableBody").append("<tr class='pageNum"+page+" tourPage'><td>"+data[i].datetime.substring(5, 7)+"/"+data[i].datetime.substring(8, 10)+"/"+data[i].datetime.substring(2, 4)+"</td><td>"+data[i].venue.name+"</td><td>"+data[i].venue.city+", "+data[i].venue.region+"</td><td>"+ticketSpot+"</td></tr>");
                     };
                     $(".tourPage").attr("style", "display: none");
                     $(".pageNum1").attr("style", "");
@@ -284,6 +284,7 @@ jQuery(document).ready(function(){
         $("#artistDropDown").attr("style", "display: none");
     });
     $("body").on("click", ".backToSearch", function(){
+        $("#pageDirectory").css("display", "none");
         $("#resultInfo").css("display", "none");
         $("#bandInfo").attr("style", "display: none");
         $("#searchContainer").attr("style", "display: initial");
@@ -310,6 +311,19 @@ jQuery(document).ready(function(){
         var page = $(".pageNum"+$(this).data("page"));
         page.attr("style", "");
         $("#tableBody").append(page);
+    });
+    $("#lightSwitch").change(function(){
+        if ($(this).prop("checked") == true){
+            $(".backSwitch").css("background-image", "url('blue.jpg')");
+            $(".blackBack").css("color", "blue");
+            $(".pageIndexBtn").css("background-color", "blue");
+            // $("#main-header").text("MUSKICK OFF");
+        } else {
+            $(".backSwitch").css("background-image", "url('purple.jpg')");
+            $(".blackBack").css("color", "gray");
+            $(".pageIndexBtn").css("background-color", "blue");
+            // $("#main-header").text("MUSKICK ON");
+        }
     });
 });
 
