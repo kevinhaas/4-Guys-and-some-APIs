@@ -16,6 +16,8 @@
 
 <body>
   <div id="wrapperWrapper">
+    <div id="addressStorage" style="display: none"></div>
+    <div id="artistStorage" style="display: none"></div>
     <div class="wrapper" style="background-image: url('dark.png');">
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
       <input type="checkbox" id="lightSwitch" data-state="off">
@@ -39,31 +41,39 @@
                   </span>
                 </div>
                 <div class="panel-body blackBack grayText">
-                  <form autocomplete="off">  
+                   
                     <label for="artistInput" class="inputLabel artistSI"><span id="required" style="display: none">* Required </span>Artist:</label>
                     <div id="artistInputDiv" style="">
-                      <input type="text" autocomplete="off" id="artistInput" class="form-control inputBox artistSI" required="required">
+                      <input type="text" autocomplete="off" id="artistInput" class="form-control inputBox artistSI">
                       <div id="artistDropDown" style="display: none"></div>
                     </div>
-                    <label for="locationInput" class="inputLabel locationSI" style="display: none">Zip Code:</label>
-                    <input type="text" style="display: none" id="locationInput" class="form-control inputBox locationSI" pattern="" title="">
-                    <label for="radiusInput" class="inputLabel locationSI" style="display: none">Radius:</label>
-                    <input type="text" style="display: none" id="radiusInput" class="form-control inputBox locationSI" pattern="" title="">
-                    <label for="venueInput" class="inputLabel venueSI" style="display: none">Venue:</label>
+                    <label for="venueInput" class="inputLabel venueSI" style="display: none">Venue </label>
                     <input type="text" style="display: none" id="venueInput" class="form-control inputBox venueSI" pattern="" title="">
                     <div class="row">
                       <div class="col-md-8">
-                        <label for="startDateInput" class="inputLabel locationSI artistSI venueSI">Start Date:</label>
-                        <input type="date" name="" id="startDateInput" class="form-control inputBox artistSI locationSI venueSI" pattern="" title="">
+                        <label for="cityInput" class="inputLabel locationSI" style="display: none">City </label>
+                    <input type="text" style="display: none" id="cityInput" placeholder="New Brunswick" class="form-control inputBox locationSI" pattern="" title="">
+                    <label for="stateInput" class="inputLabel locationSI"  style="display: none">State </label>
+                    <input type="text" style="display: none" id="stateInput" placeholder="NJ" class="form-control inputBox locationSI" pattern="" title="">
+                    <label for="radiusInput" class="inputLabel locationSI" style="display: none">Radius </label>
+                    <input type="text" style="display: none" id="radiusInput" placeholder="Number of miles (max-250)" class="form-control inputBox locationSI" pattern="" title="">
+                        <label for="startDateInput" class="inputLabel artistSI venueSI">Start Date:</label>
+                        <input type="date" name="" id="startDateInput" class="form-control inputBox artistSI venueSI" pattern="" title="">
                         <br>
-                        <label for="endDateInput" class="inputLabel locationSI artistSI venueSI">End Date:</label>
-                        <input type="date" name="" id="endDateInput" class="form-control inputBox artistSI locationSI venueSI" pattern="" title="">
+                        <label for="endDateInput" class="inputLabel artistSI venueSI">End Date:</label>
+                        <input type="date" name="" id="endDateInput" class="form-control inputBox artistSI venueSI" pattern="" title="">
                       </div>
                       <div class="col-md-4">
-                        <button class="btn btn-info buttonText" id="submit" data-target="artist">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        <div class="artistSI inputLabel">
+                          <button class="btn btn-info buttonText artistSI" id="submit" style="display: initial" data-target="artist">Tour Dates <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                        <span class="locationSI inputLabel" style="display: none">
+                          <button class="btn btn-info buttonText" id="submitVenue" data-target="venue">Venues <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
+                          <!--<button class="btn btn-info buttonText" id="submitEvents" data-target="location">Events <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                        </span>
                       </div>
                     </div>
-                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -76,10 +86,10 @@
                 </div>
               </div>
               <div class="row" class="blackBack panel-body">
-                <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="col-md-7 col-lg-7 col-sm-7">
                   <div id="bandImage"></div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="col-md-5 col-lg-5 col-sm-5">
                   <div id="bandDiscription">
                     <br>
                     <span class='infoSec grayText'>Genre: <span id="bandGenreInfo"></span></span>
@@ -99,9 +109,14 @@
               </div>
             </div>
             </div>
+            <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+              <div class="resultSection" id="resultInfo"></div>
+            </div>
+          </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="panel panel-default" id="spotifyDiv">
+            <div class="panel panel-default resultSection" id="spotifyDiv" style="display: none">
               <div style="padding: 5px; background-color: black">
               <div class="panel-heading purpleBack" style="border-radius: 5px">
                 <h3 class="panel-title headerText" id="searchDivTitle">Related </h3>
@@ -109,7 +124,7 @@
               </div>
               <div id="selectRelated">
                 <ul class="nav nav-tabs purpleBack" role="tablist">
-                  <li role="presentation" data-div="spotArtists" class="active relatedTab"><a class="whiteLink">Artists <span class="badge" id="artistsBadge"></span></a></li>
+                  <li role="presentation" data-div="spotArtists" class="active relatedTab"><a class="whiteLink">Artists <span class="badge" id="artistsBadge" style="display: none"></span></a></li>
                   <li role="presentation" data-div="relatedShows" class="relatedTab"><a class="whiteLink">Shows<span class="badge" id="showsBadge"></span></a></li>
                   <li role="presentation" id="topTracksTab" data-div="topTracks" class="relatedTab"><a class="whiteLink">Top Tracks <span class="badge" id="topBadge" style="display: none"></span></a></li>
                 </ul>
@@ -137,7 +152,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div id="tourDateScreen">
-            <div id="resultDiv" style="display: none" class="blackBack">
+            <div id="resultDiv" style="display: none" class="blackBack resultSection">
               <table class="table table-bordered table-hover">
                   <thead class="purpleBack">
                       <tr>
@@ -155,6 +170,21 @@
             </div>
           </div>
           <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span></span></div>
+          <div class="resultSection blackBack" id="venueList" style="display: none">
+            <table class="table table-bordered table-hover">
+                  <thead class="purpleBack">
+                      <tr>
+                          <th>Name</th>
+                          <th>City, State</th>
+                          <th>Address</th>
+                          <th>-</th>
+                      </tr>
+                  </thead>
+                  <tbody id="venueTableBody">
+
+                  </tbody>
+              </table>
+          </div>
         </div> 
       </div>
     </div>

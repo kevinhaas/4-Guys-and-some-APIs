@@ -168,9 +168,10 @@ html, body {
 			margin-top: 35px;
 		}
 		.mainBandImage{
-			max-height: 340px;
-			max-width: 340px;
+			max-height: 365px;
+			max-width: 400px;
 			padding: 15px;
+			margin: auto;
 			float: left;
 		}
 		#bandStuff{
@@ -240,6 +241,7 @@ html, body {
 			color: gray;
 		}
 		.buttonText{
+			margin-top: 10px;
 			color: white;
 			font-size: 18px;
 			font-family: 'Righteous', cursive;
@@ -253,15 +255,17 @@ html, body {
 			border-width: 2px;
 			border-style: solid;
 		}
-		#tourDateScreen{
-			max-height: 340px;
-			overflow-y: hidden;
-		}
 		.pagesText{
 			padding-left: 20px;
 		}
+		#resultInfo{
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Righteous', cursive;
+			color: white;
+		}
 		.pageIndexBtn{
-			padding: 5px;
+			margin: 5px;
 			background-color: purple;
 			color: white;
 		}
@@ -329,9 +333,6 @@ html, body {
 			#spotResults{
 				max-height: 345px;
 			}
-			#bandStuff{
-				height: 423px;
-			}
 		}
 		@media screen and (max-width: 767px){
 			#spotifyDiv{
@@ -347,6 +348,6 @@ html, body {
 				max-height: 310px;
 			}
 			#bandStuff{
-				height: 390px;
+				height: 420px;
 			}
 		}
