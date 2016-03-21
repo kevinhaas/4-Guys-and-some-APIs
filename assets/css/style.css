@@ -71,6 +71,7 @@ html, body {
 }
 /*Background Image*/
 .wrapper {
+	position: inherit;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-size: contain;
@@ -114,9 +115,6 @@ html, body {
 		.relatedArtist:hover{
 			cursor: pointer;
 		}
-		.mainHeader{
-			height: 50px;
-		}
 		.artistImg{
 			position: inherit;
 			height: 110px;
@@ -140,10 +138,6 @@ html, body {
 		#spotResults{
 			overflow-y: scroll;
 			max-height: 395px;
-		}
-		#required {
-			color: red;
-			font-size: 14px;
 		}
 		#artistDropDown{
 			position: absolute;
@@ -284,6 +278,7 @@ html, body {
 		  font: 14px/25px Helvetica, Arial, sans-serif;
 		  margin: 20px 0;
 		  position: fixed;
+		  z-index: 10;
 		}
 		#lightLabel:hover {
 		  background: #ddca7e;
@@ -299,7 +294,7 @@ html, body {
 		
 		/*Switched Off*/
 		
-		input#lightSwitch:checked + .main .panelTab {
+		input#lightSwitch:checked + .main {
 		  color: #ddca7e;
 		}
 		
@@ -307,7 +302,7 @@ html, body {
 		  	color: white;
 		}
 		
-		input#lightSwitch:checked + .main .headerText {
+		input#lightSwitch:checked + .main {
 		  color: #aaa;
 		} 
 		.features:after {
