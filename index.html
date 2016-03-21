@@ -21,6 +21,7 @@
     <div class="wrapper" style="background-image: url('dark.jpg');">
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
       <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
+      <button id="strobeSwitch" style="position: fixed; top:0; left: 0;">Strobe</button>
       <div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
     <div style="font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
     <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
@@ -39,7 +40,7 @@
     </div>
 </div>
       <div class="container" style="margin: auto">
-      <div class="jumbotron backSwitch" style="height: 220px;background-size: contain; background-image: url('purple.jpg'); border-radius: 20px; border-color: gray; border-style: solid; border-width: 2px" id="title">
+      <div class="jumbotron backSwitch" style="height: 220px;background-size: contain;background-image: url('purple.jpg'); border-radius: 20px; border-color: gray; border-style: solid; border-width: 2px" id="title">
         <div class="row"><div class="col-md-5 col-sm-4 col-lg-4"></div><div class="col-md-4 col-sm-4 col-lg-4">
         <img class= "" id="muskickHeader" style="border-radius: 20px; border-color: white; padding: 8px; border-style: solid; border-width: 2px" src="label.jpg">
         </div><div class="col-md-4 col-sm-4 col-lg-4"></div></div>
@@ -102,7 +103,9 @@
             <div id="bandStuff" class="blackBack">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <div id="bandHeader" class="panel-heading"></div>    
+                  <div class="mainBandHeader backSwitch" style="background-size: stretch">
+                    <div id="bandHeader" ></div>
+                  </div>    
                 </div>
               </div>
               <div class="row" class="blackBack panel-body">

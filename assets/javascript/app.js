@@ -89,7 +89,7 @@ jQuery(document).ready(function(){
                 $("#bandInfo").attr("style", "display: initial");
                 $("#searchContainer").attr("style", "display: none");
                 $("#bandImage").html("<img class='mainBandImage img-responsive' style='margin-bottom: 40px' src='"+response.artists.items[0].images[0].url+"''>");
-                $("#bandHeader").html("<h2 class='mainBandHeader backSwitch'>"+response.artists.items[0].name+"</h2>");
+                $("#bandHeader").html("<h2>"+response.artists.items[0].name+"</h2>");
                 $("#bandGenreInfo").html(response.artists.items[0].genres[0]);
                 $("#spotifyConnect").data("url", response.artists.items[0].href);
                 $("#bandFollowers").html(response.artists.items[0].followers.total);
@@ -109,7 +109,7 @@ jQuery(document).ready(function(){
             .done(function(ref) {
                 $("#topBadge").text(ref.tracks.length)
                 for(var j=0; j<ref.tracks.length; j++){
-                    $("#topTracks").append("<div class='topTrackDiv thumbnail blackBack'><span class='purpleBack'><h2 style='color: white; font-size: 24px'>#"+(j+1)+" "+ref.tracks[j].name+"</h2></span>Album: "+ref.tracks[j].album.name+"<br><audio controls volume='false'><source src='"+ref.tracks[j].preview_url+"''></audio></div>")
+                    $("#topTracks").append("<div class='topTrackDiv thumbnail blackBack'><span class='purpleBack'><h2 style='color: purple; font-size: 24px'>#"+(j+1)+" "+ref.tracks[j].name+"</h2></span>Album: "+ref.tracks[j].album.name+"<br><audio controls volume='false'><source src='"+ref.tracks[j].preview_url+"''></audio></div>")
                 }
             });
             Relatedurl = "https://crossorigin.me/http://api.bandsintown.com/artists/"+artist+"/events/recommended?&location=New+York,NY&radius=150&app_id=muskick35&api_version=2.0&format=json";
@@ -319,6 +319,17 @@ jQuery(document).ready(function(){
             $(".pageIndexBtn").css("background-color", "purple");
             $("#muskickHeader").attr("src", "label.jpg");
             // $("#main-header").text("MUSKICK ON");
+        }
+    });
+    $("#strobeSwitch").click(function(){
+        if($(this).data("state") == "on"){
+            clearInterval(strobe);
+            $(this).data("state", "off");
+        } else {
+        strobe = setInterval(function(){
+            $("#lightSwitch").click();
+        }, 100);
+        $(this).data("state", "on");
         }
     });
 });
