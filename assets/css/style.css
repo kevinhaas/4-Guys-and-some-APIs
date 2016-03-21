@@ -60,9 +60,21 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
   font-style: normal;
 }
-
-#title {
-    text-align: center;
+html, body {
+  height: 100%;
+  width: 100%;
+}
+#wrapperWrapper{
+	position: inherit;
+	margin: auto;
+	background-color: black;
+}
+/*Background Image*/
+.wrapper {
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 900px;
 }
 
 #searchTitle {
@@ -81,22 +93,29 @@ h1,h2,h3,h4,h5,h6 {
     width: 50%;
 }
 
-#resultDiv {
-	max-height: 500px;
-	overflow-y: scroll; 
-}
-
 /* robs css */
 		.related{
 			height: 110px;
 			padding: ;
 			position: inherit;
 			margin: 5px;
+			background-color: black;
+			color: gray;
+		}
+		.related:hover{
+			background-color: white;
+			color: black;
 		}
 		.relatedArtist{
 			margin-bottom: 10px;
 			position: inherit;
 			margin: auto;
+		}
+		.relatedArtist:hover{
+			cursor: pointer;
+		}
+		.mainHeader{
+			height: 50px;
 		}
 		.artistImg{
 			position: inherit;
@@ -116,24 +135,34 @@ h1,h2,h3,h4,h5,h6 {
 			border-radius: 5px;
 			border-color: gray;
 			border-width: 2px;
+			width: 363px;
 		}
 		#spotResults{
 			overflow-y: scroll;
 			max-height: 395px;
 		}
+		#required {
+			color: red;
+			font-size: 14px;
+		}
 		#artistDropDown{
 			position: absolute;
-			top: 144px;
-			min-width: 330px;
+			top: 187px;
+			min-width: 350px;
 			border-radius: 5px;
-			border-color: #337ab7;
+			border-color: purple;
 			border-style: solid;
 			border-width: 0px 2px 2px 2px;
 			z-index: 10;
 		}
+		.dropDownItem{
+			background-color: gray;
+			color: white;
+		}
 		.dropDownItem:hover{
 			background-color: white;
 			cursor: pointer;
+			color: purple;
 		}
 		#submit{
 			margin-top: 35px;
@@ -151,40 +180,151 @@ h1,h2,h3,h4,h5,h6 {
 			border-width: 2px;
 			height: 483px;
 		}
+		.grayText{
+			font-family: 'Yanone Kaffeesatz', sans-serif;
+			font-size: 24px;
+		}
 		.mainBandHeader{
+			padding-top: 15px;
 			text-align: center;
 			font-family: 'Righteous', cursive;
 			padding: 15px;
-			background-color: #337ab7;
+			background-image: url("../../purple.jpg");
+			background-size: cover;
 			color: white;
+			height: 100px;
 			font-size: 40px;
 			border-style: solid;
 			border-width: 0px 0px 3px 0px;
 		}
-		.spotRes{
-			background-color: #337ab7;
-			border-radius: 10px;
+		.whiteLink{
+			color: white;
 			border-color: gray;
+			border-width: 1px;
+			border-style: style;
+			text-align: center;
+		}
+		.purpleBack{
+			background-image: url("../../purple.jpg");
+			background-size: cover;
+			font-family: 'Righteous', cursive;
+			color: white;
+		}
+		.headerText{
+			color: white;
+			font-family: 'Righteous', cursive;
+			font-size: 24px;
+			padding: 5px;
+			text-align: center;
+		}
+		.relatedTab{
+			background-image: url("../../purple.jpg");
+			background-size: cover;
+			border-color: black;
+			border-radius: 5px;
+			border-width: 2px;
+			border-style: solid;
+		}
+		.blackBack{
+			background-color: black;
+			color: gray;
+			font-family: 'Yanone Kaffeesatz', sans-serif;
+			font-size: 24px;
+		}
+		.table-body{
+			background-color:black;
+			color: gray;
+		}
+		.panel-body{
+			background-color: black;
+			color: gray;
+		}
+		.buttonText{
+			color: white;
+			font-size: 18px;
+			font-family: 'Righteous', cursive;
+		}
+		.searchTab{
+			background-image: url("../../purple.jpg");
+			background-size: cover;
+			margin: 0px 10px 0px 10px;
+			border-color: black;
+			border-radius: 5px;
+			border-width: 2px;
+			border-style: solid;
+		}
+		#tourDateScreen{
+			max-height: 340px;
+			overflow-y: hidden;
+		}
+		.pagesText{
+			padding-left: 20px;
+		}
+		.pageIndexBtn{
+			padding: 5px;
+			background-color: purple;
+			color: white;
+		}
+		.spotRes{
+			background-image: url("../../purple.jpg");
+			background-size: cover;
 			padding: 3px 0px 3px 0px;
 			margin: 10px;
 		}
-		#selectRelated{
-			text-align: center;
+		#lightLabel {
+		  display: block;
+		  height: 25px;
+		  width: 100px;
+		  background: #eee;
+		  text-align: center;
+		  font: 14px/25px Helvetica, Arial, sans-serif;
+		  margin: 20px 0;
+		  position: fixed;
 		}
-		#resultDiv{
-			max-height: 600px;
-			overflow-y: scroll;
+		#lightLabel:hover {
+		  background: #ddca7e;
+		  color: #fff;
+		  cursor: pointer;
+		}
+		input#lightSwitch {
+		   position: inherit;
+		   left: -9999px;
+		   top: 300px;
+		}
+		
+		
+		/*Switched Off*/
+		
+		input#lightSwitch:checked + .main .panelTab {
+		  color: #ddca7e;
+		}
+		
+		input#lightswitch:not(:checked) + .main h2 {
+		  	color: white;
+		}
+		
+		input#lightSwitch:checked + .main .headerText {
+		  color: #aaa;
+		} 
+		.features:after {
+ 		 content: "";
+ 		 display: table;
+ 		 clear: both;
+		}
+		#selectSearch{
+			margin: auto;
+			text-align: center;
 		}
 		@media screen and (max-width: 1200px){
 			#spotifyDiv{
-				width: 320px;
+				width: 306px;
 			}
 			.badge{
 				display: none;
 			}
 			.mainBandImage{
 				max-height: 300px;
-				max-width: 3000px;
+				max-width: 300px;
 			}
 			#spotResults{
 				max-height: 345px;
@@ -210,65 +350,3 @@ h1,h2,h3,h4,h5,h6 {
 				height: 390px;
 			}
 		}
-
-/* eugene css*/
-
-#chatbox-container {
-	border:thin grey solid;
-	height:500px; 
-	border-radius: 20px 20px 20px 20px; 
-	padding:10px 10px 10px 10px;
-}
-#chatbox {
-	overflow-y:scroll;
-	height:400px;
-	width:100%; 
-	word-wrap: break-word;
-}
-
-#chatbox-input-container {
-	display:flex; 
-	font-size: 18px
-}
-
-#username {
-	font-weight:bold;
-}
-
-#authentication {
-
-}
-
-#chatmessage {
-	width:100%; 
-	font-size: 18px
-}
-
-#setnamedialog {
-	font-size: small; 
-	text-decoration: none;
-}
-
-#numberofusers {
-
-}
-
-#dialog {
-	display: none;
-}
-
-#or {
-	font-size:18px; 
-	text-align: center
-}
-
-#usernameset {
-
-}
-
-#seturnamebutton {
-
-}
-
-
-
