@@ -3,70 +3,107 @@
 <head>
     <title>Show Search</title>
     <meta charset="utf-8">
+    <!-- start of scripts -->
+    <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href ="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js"></script>
+    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/master/dist/oauth.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+    <script src="assets/javascript/app2.js" type="text/javascript"></script>
 </head>
 
 <body>
   <div id="wrapperWrapper">
-    <div class="wrapper" style="background-image: url('dark.png');">
-        
+    <div id="addressStorage" style="display: none"></div>
+    <div id="artistStorage" style="display: none"></div>
+    <div class="wrapper" style="background-image: url('dark.jpg');">
       <label for="lightSwitch" id="lightLabel">Light Switch</label>
-      <input type="checkbox" id="lightSwitch" data-state="off">
-      
-      <div class="mainHeader"></div>
-      <div class="jumbotron" style="visibility: hidden" id="title">
+      <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
+      <button id="strobeSwitch" style="position: fixed; top:0; left: 0;">Strobe</button>
+      <div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
+    <div style="font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
+    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
+    <div style="display:flex; justify-content: center;">
+        <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
+        <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
+    </div>
+</div>
+<div id="poll-dialog" title="Thanks for voting!" style="display:none">
+    <div style="text-align: center;">We appreciate your feedback!</div>
+    <div style="display:flex; justify-content: center;">
+        <canvas id="pollChart" width="200" height="200"/>
+    </div>
+    <div style="float:right;">
+        <button onclick="$('#poll-dialog').dialog('close');">OK</button>
+    </div>
+</div>
+      <div class="container" style="margin: auto">
+      <div class="jumbotron backSwitch" style="height: 220px;background-size: contain;background-image: url('purple.jpg'); border-radius: 20px; border-color: gray; border-style: solid; border-width: 2px" id="title">
+        <div class="row"><div class="col-md-5 col-sm-4 col-lg-4"></div><div class="col-md-4 col-sm-4 col-lg-4">
+        <img class= "" id="muskickHeader" style="border-radius: 20px; border-color: white; padding: 8px; border-style: solid; border-width: 2px" src="label.jpg">
+        </div><div class="col-md-4 col-sm-4 col-lg-4"></div></div>
       </div>
-      
-      <div class="container">
-          
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8">
             <div id="searchContainer">
               <div class="panel panel-default" id="searchDiv">
-                <div class="purpleBack" id="searchPanel">
+                <div class="purpleBack backSwitch" id="searchPanel">
                   <div class="headerText"> Search Concerts by: </div>
                   <br>
                   <br>
                   <span id="selectSearch">
                     <ul class="nav nav-tabs" role="tablist">
-                      <li role="presentation" data-target="artist" class="active searchTab"><a class="whiteLink">Artist </a></li>
-                      <li role="presentation" data-target="location" class="searchTab"><a class="whiteLink">Location </a></li>
-                      <li role="presentation" data-target="venue" class="searchTab"><a class="whiteLink">Venue </a></li>
+                      <li role="presentation" data-target="artist" class="active searchTab backSwitch"><a class="whiteLink">Artist </a></li>
+                      <li role="presentation" data-target="location" class="searchTab backSwitch"><a class="whiteLink">Location </a></li>
+                      <li role="presentation" data-target="venue" class="searchTab backSwitch"><a class="whiteLink">Venue </a></li>
                     </ul>
                   </span>
                 </div>
                 <div class="panel-body blackBack grayText">
-                  <form autocomplete="off">  
+                   
                     <label for="artistInput" class="inputLabel artistSI"><span id="required" style="display: none">* Required </span>Artist:</label>
                     <div id="artistInputDiv" style="">
-                      <input type="text" autocomplete="off" id="artistInput" class="form-control inputBox artistSI" required="required">
+                      <input type="text" autocomplete="off" id="artistInput" class="form-control inputBox artistSI">
                       <div id="artistDropDown" style="display: none"></div>
                     </div>
-                    <label for="locationInput" class="inputLabel locationSI" style="display: none">Zip Code:</label>
-                    <input type="text" style="display: none" id="locationInput" class="form-control inputBox locationSI" pattern="" title="">
-                    <label for="radiusInput" class="inputLabel locationSI" style="display: none">Radius:</label>
-                    <input type="text" style="display: none" id="radiusInput" class="form-control inputBox locationSI" pattern="" title="">
-                    <label for="venueInput" class="inputLabel venueSI" style="display: none">Venue:</label>
+                    <label for="venueInput" class="inputLabel venueSI" style="display: none">Venue </label>
                     <input type="text" style="display: none" id="venueInput" class="form-control inputBox venueSI" pattern="" title="">
                     <div class="row">
                       <div class="col-md-8">
-                        <label for="startDateInput" class="inputLabel locationSI artistSI venueSI">Start Date:</label>
-                        <input type="date" name="" id="startDateInput" class="form-control inputBox artistSI locationSI venueSI" pattern="" title="">
+                        <label for="cityInput" class="inputLabel locationSI" style="display: none">City </label>
+                    <input type="text" style="display: none" id="cityInput" placeholder="New Brunswick" class="form-control inputBox locationSI" pattern="" title="">
+                    <label for="stateInput" class="inputLabel locationSI"  style="display: none">State </label>
+                    <input type="text" style="display: none" id="stateInput" placeholder="NJ" class="form-control inputBox locationSI" pattern="" title="">
+                    <label for="radiusInput" class="inputLabel locationSI" style="display: none">Radius </label>
+                    <input type="text" style="display: none" id="radiusInput" placeholder="Number of miles (max-250)" class="form-control inputBox locationSI" pattern="" title="">
+                        <label for="startDateInput" class="inputLabel artistSI venueSI">Start Date:</label>
+                        <input type="date" name="" id="startDateInput" class="form-control inputBox artistSI venueSI" pattern="" title="">
                         <br>
-                        <label for="endDateInput" class="inputLabel locationSI artistSI venueSI">End Date:</label>
-                        <input type="date" name="" id="endDateInput" class="form-control inputBox artistSI locationSI venueSI" pattern="" title="">
+                        <label for="endDateInput" class="inputLabel artistSI venueSI">End Date:</label>
+                        <input type="date" name="" id="endDateInput" class="form-control inputBox artistSI venueSI" pattern="" title="">
                       </div>
                       <div class="col-md-4">
-                        <button class="btn btn-info buttonText" id="submit" data-target="artist">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        <div class="artistSI inputLabel">
+                          <button class="btn btn-info buttonText artistSI" id="submit" style="display: initial" data-target="artist">Tour Dates <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                        <span class="locationSI inputLabel" style="display: none">
+                          <button class="btn btn-info buttonText" id="submitVenue" data-target="venue">Venues <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
+                          <!--<button class="btn btn-info buttonText" id="submitEvents" data-target="location">Events <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                        </span>
                       </div>
                     </div>
-                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -75,14 +112,16 @@
             <div id="bandStuff" class="blackBack">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <div id="bandHeader" class="panel-heading"></div>    
+                  <div class="mainBandHeader backSwitch" style="background-size: stretch">
+                    <div id="bandHeader" ></div>
+                  </div>    
                 </div>
               </div>
               <div class="row" class="blackBack panel-body">
-                <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="col-md-7 col-lg-7 col-sm-7">
                   <div id="bandImage"></div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="col-md-5 col-lg-5 col-sm-5">
                   <div id="bandDiscription">
                     <br>
                     <span class='infoSec grayText'>Genre: <span id="bandGenreInfo"></span></span>
@@ -102,26 +141,31 @@
               </div>
             </div>
             </div>
+            <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+              <div class="resultSection" id="resultInfo"></div>
+            </div>
+          </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="panel panel-default" id="spotifyDiv">
+            <div class="panel panel-default resultSection" id="spotifyDiv" style="display: none">
               <div style="padding: 5px; background-color: black">
-              <div class="panel-heading purpleBack" style="border-radius: 5px">
+              <div class="panel-heading purpleBack backSwitch" style="border-radius: 5px">
                 <h3 class="panel-title headerText" id="searchDivTitle">Related </h3>
               </div>
               </div>
               <div id="selectRelated">
-                <ul class="nav nav-tabs purpleBack" role="tablist">
-                  <li role="presentation" data-div="spotArtists" class="active relatedTab"><a class="whiteLink">Artists <span class="badge" id="artistsBadge"></span></a></li>
-                  <li role="presentation" data-div="relatedShows" class="relatedTab"><a class="whiteLink">Shows<span class="badge" id="showsBadge"></span></a></li>
-                  <li role="presentation" id="topTracksTab" data-div="topTracks" class="relatedTab"><a class="whiteLink">Top Tracks <span class="badge" id="topBadge" style="display: none"></span></a></li>
+                <ul class="nav nav-tabs purpleBack backSwitch" role="tablist">
+                  <li role="presentation" data-div="spotArtists" class="active relatedTab backSwitch"><a class="whiteLink">Artists <span class="badge" id="artistsBadge" style="display: none"></span></a></li>
+                  <li role="presentation" data-div="relatedShows" class="relatedTab backSwitch"><a class="whiteLink">Shows<span class="badge" id="showsBadge"></span></a></li>
+                  <li role="presentation" id="topTracksTab" data-div="topTracks" class="relatedTab backSwitch"><a class="whiteLink">Top Tracks <span class="badge" id="topBadge" style="display: none"></span></a></li>
                 </ul>
               </div>
               <div id="spotResults" class="blackBack">
                 <div id="spotArtists" class="tabDisplay"></div>
                 <div id="relatedShows" style="display: none" class="tabDisplay">
                   <table class="table table-bordered table-responsive table-hover">
-                    <thead class="purpleBack">
+                    <thead class="purpleBack backSwitch">
                       <tr>
                         <th>Artist</th>
                         <th>Location</th>
@@ -136,98 +180,80 @@
               </div>
             </div>
           </div>
+          <div id="signInBox" class="resultSection">
+              <!--
+
+            Sign-in box here?
+
+
+              -->
+          </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
+            <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span><span id="pageDirTitle" class="grayText">Tour Dates</span></span></div>
             <div id="tourDateScreen">
-            <div id="resultDiv" style="display: none" class="blackBack">
+            <div id="resultDiv" style="display: none" class="blackBack resultSection">
               <table class="table table-bordered table-hover">
-                  <thead class="purpleBack">
+                  <thead class="purpleBack backSwitch">
                       <tr>
                           <th>Date</th>
                           <th>Venue</th>
-                          <th>State</th>
-                          <th>City</th>
+                          <th>Location</th>
                           <th>Tickets</th>
                       </tr>
                   </thead>
-                  <tbody id="tableBody">
+                  <tbody id="tableBody" class="blackBack">
 
                   </tbody>
               </table>
             </div>
           </div>
-          <div id="pageDirectory" style="display: none"><span class="thumbnail pagesText grayText">Pages: <span id="pageButtons"></span></span></div>
+          <div class="resultSection blackBack" id="venueList" style="display: none">
+            <table class="table table-bordered table-hover">
+                  <thead class="purpleBack backSwitch">
+                      <tr>
+                          <th>Name</th>
+                          <th>City, State</th>
+                          <th>Address</th>
+                          <th>-</th>
+                      </tr>
+                  </thead>
+                  <tbody id="venueTableBody" class="blackBack">
+
+                  </tbody>
+              </table>
+          </div>
         </div> 
       </div>
-      
-      
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div id="chatbox-container">
-            <div id="chatbox"></div>
-            <div id="chatbox-input-container">
-            <span id="username">Anonymous</span>
-            <sup><a id="authentication"></a></sup>
-            <button onclick="submitChatMessage();">Send</button>
-            <input id="chatmessage" type="text" maxlength="200" placeholder="Chat with other music aficionados"/>
-            <a href="#" id="setnamedialog" onclick="usernamedialog();">(Set Name)</a>
-          </div>
-          <div>There are <span id="numberofusers">1</span> users online now.</div>
-          </div>
-        <div id="dialog" title="Set username">
-      <p>Please enter your username.</p>
-      <div id="dialogerror"></div>
-      <div>
-          <input id="usernameset"/>
-          <button onclick="setusername($('#usernameset').val());" id="seturnamebutton">Ok</button>
-      </div>
-      <div id="or">OR</div>
-      <div>
-          <span>Login in with:</span>
-          <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="32" height="32" onclick="twitter();" title="Login with Twitter!"/>
-      </div>
-
-  </div>
-  </div>
-
-
-<div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; bottom:0; right:0; height:100px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
-    <div style="float:right; font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
-    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
-    <div style="display:flex; justify-content: center;">
-        <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
-        <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
+      <div class="row"><div class="col-md-12 col-sm-12 col-lg-12">
+        <div id="chatbox-container" style="border:thin grey solid; min-height:300px; max-height: 500px; border-radius: 20px 20px 20px 20px; padding:10px 10px 10px 10px;" class="purpleBack backSwitch">
+    <div id="chatbox" style="overflow-y:scroll; min-height:200px; width:100%; word-wrap: break-word;" class="blackBack"></div>
+    <div id="chatbox-input-container" style="display:flex; font-size: 18px;">
+        <span id="username" style="font-weight:bold;">Anonymous</span>
+        <sup><a id="authentication"></a></sup>
+        <button onclick="submitChatMessage();">Send</button>
+        <input id="chatmessage" type="text" maxlength="200" placeholder="Chat with other music aficionados" style="color: black; width:100%; font-size: 18px"/>
+        <a href="#" style="font-size: small; text-decoration: none;" onclick="usernamedialog();">(Set Name)</a>
+    </div>
+    <div>There are <span id="numberofusers">1</span> users online now.</div>
+</div>
+<div id="dialog" title="Set username" style="display:none">
+    <p>Please enter your username.</p>
+    <div id="dialogerror"></div>
+    <div style="display: flex">
+        <input id="usernameset"/>
+        <button onclick="setusername($('#usernameset').val());" id="seturnamebutton">Ok</button>
+    </div>
+    <div style="font-size:18px; text-align: center">OR</div>
+    <div>
+        <span>Login in with:</span>
+        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" width="32" height="32" onclick="twitter();" title="Login with Twitter!"/>
     </div>
 </div>
-<div id="poll-dialog" title="Thanks for voting!" style="display:none">
-    <div style="text-align: center;">We appreciate your feedback!</div>
-    <div style="display:flex; justify-content: center;">
-        <canvas id="pollChart" width="200" height="200"/>
-    </div>
-    <div style="float:right;">
-        <button onclick="$('#poll-dialog').dialog('close');">OK</button>
-    </div>
-</div>
-      
+      </div></div>
     </div>
   </div>
-  </div>
-  </div>
-
-      
-  
-      <!-- start of scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js"></script>
-    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/master/dist/oauth.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.0.js" type="text/javascript"></script>
-    <script src="assets/javascript/app.js" type="text/javascript"></script>
-    <script src="assets/javascript/app2.js" type="text/javascript"></script>
   
 </body>
 </html>

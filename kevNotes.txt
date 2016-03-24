@@ -1,0 +1,15 @@
+my personal notez
+3/16/16
+
+
+- use my firebase for now til we decide which to use
+
+- definitely get my VPS working with this afterwards
+
+- music app that tells your friends what you're listening to with info? what else could you do with this?
+
+- will it have to ge the venueID first then the venue?
+
+- table info will be generated with jQuery
+
+- other pages (resources/credits/etc) use breadcrumbs? get practice setting up more than one html file 
