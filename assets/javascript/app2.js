@@ -43,7 +43,7 @@
                 .append($("<span/>").text(":"))
                 .append($("<span/>").text(childSnapshot.val().message)));
         var chatBox = $("#chatbox");
-
+// keep chat scroll locked to the bottom
         chatBox[0].scrollTop = chatBox[0].scrollHeight;
     });
 
