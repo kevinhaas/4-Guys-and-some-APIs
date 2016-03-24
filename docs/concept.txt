@@ -48,3 +48,11 @@ Ideas
 
 - welcome back user message. make it into a homepage?
 
+- implement a calendar?
+
+Implemented
+--------------------
+- recommends other shows if the selected artist doesn't have any upcoming dates
+- theme button
+- user auth with twitter
+
