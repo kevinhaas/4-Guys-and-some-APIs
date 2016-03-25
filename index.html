@@ -42,9 +42,9 @@
 <!-- end topNavBar div -->
         
 <!-- begin poll div -->
-            <div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
-                <div style="font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
-                    <div style="text-align:center; font-weight:bold; font-size: 18px;">Do you like our redesign?</div>
+            <div id="pollbox-container" style="border:thin black solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: LightSlateGray; visibility: hidden;">
+                <div style="font-weight: bold; font-size:20px; font-family:Arial; text-align: right; padding-right:8px;" onclick="$(this).parent().remove();">X</div>
+                    <div style="text-align:center; font-weight:bold; font-size: 18px; color:black;">Do you like our redesign?</div>
                         <div style="display:flex; justify-content: center;">
                             <img src="http://uxrepo.com/static/icon-sets/linecons/svg/thumbs-up.svg" height="50" width="50px" onclick="vote('Up');" title="It's Amazing!" class="hover" alt="up">
                             <img src="http://uxrepo.com/static/icon-sets/font-awesome/svg/thumbs-down.svg" height="50px" width="50px" onclick="vote('Down');" title="This is utter crap!" class="hover" alt="down">
@@ -53,6 +53,7 @@
                     
             <div id="poll-dialog" title="Thanks for voting!" style="display:none">
                 <div style="text-align: center;">We appreciate your feedback!</div>
+                    <img src="http://www.clipartbest.com/cliparts/9ip/bok/9ipbokLAT.jpeg" height="59" width="44" style="float:right;">
                     <div style="display:flex; justify-content: center;">
                         <canvas id="pollChart" width="200" height="200"/>
                     </div>
