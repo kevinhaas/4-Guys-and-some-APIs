@@ -22,11 +22,25 @@
         
             <div class="wrapper" style="background-image: url('assets/images/dark.jpg');">
             
-<!-- themeswitch -->
-            <label for="lightSwitch" id="lightLabel">Light Switch</label>
-                <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
-                <button id="strobeSwitch" style="position: fixed; top:0; left: 0;">Strobe</button>
-            
+<!-- begin topNavBar div -->
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <a class="navbar-brand" href="#"><img id="textLogo" src="assets/images/text_logo.png"></a>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">Concert Search</a>
+                    </li>
+                    <li>
+                        <a href="#">Calendar</a>
+                    </li>
+                </ul>
+<!-- theme switch -->
+                <div id="lightSwitchNav">
+                    <label for="lightSwitch" id="lightLabel"><img id="switchPic" src="assets/images/switch1.jpg"></label>
+                    <input type="checkbox" id="lightSwitch" name="lightSwitch" data-state="off">
+                </div>
+            </nav>
+<!-- end topNavBar div -->
+        
 <!-- begin poll div -->
             <div id="pollbox-container" style="border:thin blue solid; width: 180px; position:fixed; z-index: 10; bottom: 0px; right:0; height:130px;  border-radius: 15px 15px 0px 0px; background: skyblue;">
                 <div style="font-weight: bold; font-size:20px; font-family:Arial;" onclick="$(this).parent().remove();">X</div>
@@ -55,35 +69,7 @@
         </div><div class="col-md-4 col-sm-4 col-lg-4"></div></div>
       </div>
 <!-- end poll div -->
-     
-<!-- begin topNavBar div -->
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <a class="navbar-brand" href="#">Muskick</a>
-          <ul class="nav navbar-nav">
-              <li class="active">
-                  <a href="#">Home</a>
-              </li>
-              <li>
-                  <a href="#">Link</a>
-              </li>
-              <li>
-                  <a href="#">Theme Button(will switch on click)</a>
-              </li>
-          </ul>
-      </nav>
-<!-- end topNavBar div -->
-      
-      
-      <ol class="breadcrumb">
-          <li>
-              <a href="#">Home</a>
-          </li>
-          <li>
-              <a href="#">Link</a>
-          </li>
-          <li class="active">Current</li>
-      </ol>
-      
+
 <!-- begin search div -->
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8">
@@ -326,7 +312,40 @@
 
 <div id="footer">
       <div class="container">
-        <p class="muted credit">make this a sticky footer with links to resources or logos?</p>
+          
+          <!--<div id="badges">
+              
+              <span class="badge">Badge</span>
+              <span class="badge">Badge</span>
+              <span class="badge">Badge</span>
+              <span class="badge">Badge</span>
+              
+          </div>-->
+          
+          <div class="row">
+              <div class="col-lg-3">
+                  
+                          <div id="badgeDiv">
+              
+              <span class="badge">Home</span>
+              <span class="badge">About</span>
+              <span class="badge">Contact</span>
+              <span class="badge">Resources</span>
+                          </div>
+              
+          </div>  
+                
+                
+                <div class="col-lg-6">
+                <div id="logoDiv">
+                    <a href="" target="_blank"><img class="logo" id="spotifyLogo" src="assets/images/bit_spotify.jpg"></a>&nbsp&nbsp
+                    <a href="http://oauth.net/" target="_blank"><img class="logo" src="assets/images/oauthlogo.jpg"></a>
+                    <a href="https://doorbell.io/" target="_blank"><img class="logo" src="assets/images/doorbell_logo2.jpg"></a>
+                    <a href="" target="_blank"><img class="logo" src=""></a>
+                </div>
+              </div>
+           </div>
+           
       </div>
 </div>
 

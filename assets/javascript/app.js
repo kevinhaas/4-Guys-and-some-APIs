@@ -420,20 +420,22 @@ jQuery(document).ready(function(){
     // use blackBack or backSwitch to toggle background colors and fonts for the element
     $("#lightSwitch").change(function(){
         if ($(this).prop("checked") == true){
-            $(".backSwitch").css("background-image", "url('../images/blue.jpg')");
+            $(".backSwitch").css("background-image", "url('assets/images/blue.jpg')");
             $(".blackBack").css("color", "black");
             $(".blackBack").css("background-color", "white");
             $(".pageIndexBtn").css("background-color", "blue");
-            $(".wrapper").css("background-image", "url('../images/light.jpg')");
-            $("#muskickHeader").attr("src", "label2.jpg");
+            $(".wrapper").css("background-image", "url('assets/images/light.jpg')");
+            $("#muskickHeader").attr("src", "assets/images/label2.jpg");
+            $("#switchPic").attr("src", "assets/images/switch2.jpg");
             // $("#main-header").text("MUSKICK OFF");
         } else {
-            $(".backSwitch").css("background-image", "url('../images/purple.jpg')");
-            $(".wrapper").css("background-image", "url('../images/dark.jpg')");
+            $(".backSwitch").css("background-image", "url('assets/images/purple.jpg')");
+            $(".wrapper").css("background-image", "url('assets/images/dark.jpg')");
             $(".blackBack").css("color", "gray");
             $(".blackBack").css("background-color", "black");
             $(".pageIndexBtn").css("background-color", "purple");
-            $("#muskickHeader").attr("src", "../images/label.jpg");
+            $("#muskickHeader").attr("src", "assets/images/label.jpg");
+            $("#switchPic").attr("src", "assets/images/switch1.jpg");
             // $("#main-header").text("MUSKICK ON");
         };
     });

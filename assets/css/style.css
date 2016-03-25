@@ -422,20 +422,31 @@ html, body {
 			padding: 3px 0px 3px 0px;
 			margin: 10px;
 		}
+        .navbar {
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            font-size: 24px;
+            background-color: #f8f8f8;
+        }
+        #textLogo {
+            margin-top: -10px;
+        }
+        #lightSwitchNav {
+            position: absolute;
+            right: 5%;
+        }
 		#lightLabel {
 		  display: block;
-		  height: 25px;
+		  height: 20px;
 		  width: 100px;
-		  background: #eee;
 		  text-align: center;
 		  font: 14px/25px Helvetica, Arial, sans-serif;
-		  margin: 20px 0;
-		  position: fixed;
+		  position: absolute;
+          margin-top: -5px;
 		  z-index: 10;
 		}
 		#lightLabel:hover {
-		  background: #ddca7e;
-		  color: #fff;
+		  /*background: #ddca7e;
+		  color: #fff;*/
 		  cursor: pointer;
 		}
 		input#lightSwitch {
@@ -471,6 +482,27 @@ html, body {
 			font-size: 24px;
 			margin-left: 35px;
 		}
+        #footer {
+            background-color: #b9b9b9;
+            color: #ffffff;
+            height: 150px;
+        }
+        #logoDiv {
+            height: 50px;
+            position: relative;
+            left: 16%;
+            margin-top: 4%;
+        }
+        .logo {
+            max-height: 100px;
+        }
+        #spotifyLogo {
+            
+        }
+        #badgeDiv {
+            margin-top: 7%;
+        }
+        
 		@media screen and (max-width: 1200px){
 			#spotifyDiv{
 				width: 306px;
