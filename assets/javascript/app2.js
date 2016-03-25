@@ -21,6 +21,13 @@
         }
     }
 
+    $(function(){
+       $("#chatmessage").keydown(function (e){ //submit chat message on enter
+           if(e.which == 13) submitChatMessage();
+       })
+    });
+
+
     //load last 50 messages, limited to last day)
     //http://stackoverflow.com/questions/24312783/firebase-child-added-without-loading-all-data-first
     chatbase.startAt(moment().subtract(3,"day").valueOf()).limitToLast(50).on('child_added',function(childSnapshot){
@@ -160,6 +167,7 @@
             //set up bar chart
             var ctx = $("#pollChart").get(0).getContext("2d");
             var myBarChart = new Chart(ctx).Bar(data);
+            $("#pollbox-container").remove();
 
         });
     }
