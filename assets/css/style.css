@@ -338,7 +338,7 @@ html, body {
 			text-align: center;
 			font-family: 'Righteous', cursive;
 			padding: 15px;
-			background-image: url("../../purple.jpg");
+			background-image: url("../images/purple.jpg");
 			background-size: cover;
 			color: white;
 			font-size: 40px;
@@ -353,7 +353,7 @@ html, body {
 			text-align: center;
 		}
 		.purpleBack{
-			background-image: url("../../purple.jpg");
+			background-image: url("../images/purple.jpg");
 			background-size: cover;
 			font-family: 'Righteous', cursive;
 			color: white;
@@ -366,7 +366,7 @@ html, body {
 		}
 
 		.relatedTab{
-			background-image: url("../../purple.jpg");
+			background-image: url("../images/purple.jpg");
 			background-size: cover;
 			border-color: black;
 			border-radius: 5px;
@@ -394,7 +394,7 @@ html, body {
 			font-family: 'Righteous', cursive;
 		}
 		.searchTab{
-			background-image: url("../../purple.jpg");
+			background-image: url("../images/purple.jpg");
 			background-size: cover;
 			margin: 0px 10px 0px 10px;
 			border-color: black;
@@ -417,7 +417,7 @@ html, body {
 			color: white;
 		}
 		.spotRes{
-			background-image: url("../../purple.jpg");
+			background-image: url("../images/purple.jpg");
 			background-size: cover;
 			padding: 3px 0px 3px 0px;
 			margin: 10px;
