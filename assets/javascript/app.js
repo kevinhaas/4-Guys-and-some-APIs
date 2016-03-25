@@ -1,5 +1,22 @@
 
 jQuery(document).ready(function(){
+    if(~~(Math.random()*2)) { //50/50
+        $("#pollbox-container").hide();
+        window.doorbellOptions = {
+            appKey: 'BJO6el4txuLFdoFTCgkhNcyZJBdweqobNm8AnsjPNFNqpYLfk8rdHqYUvOPb4Nhl'
+        };
+        (function (d, t) {
+            var g = d.createElement(t);
+            g.id = 'doorbellScript';
+            g.type = 'text/javascript';
+            g.async = true;
+            g.src = 'https://embed.doorbell.io/button/3446?t=' + (new Date().getTime());
+            (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(g);
+        }(document, 'script'));
+    }
+    else{
+        $("#pollbox-container").css({"visibility":"visible"});
+    }
     var id = "";
     var url = "";
     var keyPress = 0;
@@ -141,7 +158,6 @@ jQuery(document).ready(function(){
             });
         });
     };
-
     function getTourDates(artist, start, end){
         var date = "";
         if(start != "" && end != "") date = "date="+start+","+end+"&";
@@ -191,19 +207,27 @@ jQuery(document).ready(function(){
             }
         });
     }
-    $("body").on("click", ".relatedArtist", function(){
+    $("body").on("click", ".relatedArtist", searchRelatedArtist);
+    $("body").on("tap", ".relatedArtist", searchRelatedArtist);
+    function searchRelatedArtist(){
         searchByArtist($(this).data("artist"), $("#startDateInput").val(), $("#endDateInput").val());
         
-    }); 
+    }; 
     // tab toggles
-    $("body").on("click", ".relatedTab", function(){
+    //  related view
+    $("body").on("click", ".relatedTab", changeRelatedPage);
+    $("body").on("tap", ".relatedTab", changeRelatedPage);
+    function changeRelatedPage(){
         $(".relatedTab").removeClass("active");
         $(this).addClass("active");
         $(".tabDisplay").attr("style", "display: none");
         var div = $(this).data("div");
         $("#"+div).attr("style", "display: initial");
-    });
-    $("body").on("click", ".searchTab", function(){
+    };
+    //
+    $("body").on("click", ".searchTab", changeSearch);
+    $("body").on("tap", ".searchTab", changeSearch);
+    function changeSearch(){
         var target = $(this).data("target");
         $("#submit").attr("data-target", target);
         if($(this).hasClass("active")) return;
@@ -213,8 +237,57 @@ jQuery(document).ready(function(){
         $(".inputBox").attr("style", "display: none");
         $(".inputLabel").attr("style", "display: none");
         $("."+target+"SI").attr("style", "display: initial");
-    });
+    };
+    $("body").on("click", "#submitEvents", submitEvent);
+    $("body").on("tap", "#submitEvents", submitEvent);
+    function submitEvent(){
+        var state = $("#stateInput").val();
+        var city = $("#cityInput").val();
+        if(state == "" || city == "") return;
+        var radius = $("#radiusInput").val();
+        var locale = city + "," + state;
+        findEventsByLocation(locale, radius);
+        $(".inputBox").val("");
+        return false;
+    };
+    function findEventsByLocation(locale, radius){
+        var rad = radius
+        if(radius == "") rad = "0";
+        url = "https://crossorigin.me/http://api.bandsintown.com/events/search.json?location="+locale+"&radius="+rad+"&page=2&app_id=muskick35";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'JSON',
+            success: function(data){
+                console.log(data);
+                $("#resultSection").css("display", "none");
+                if(data.length > 0){
+                    $("#eventList").css("display", "initial");
+                    $("#eventTableBody").html("");
+                    for(var i=0; i<25; i++){
+                        var cityState = data[i].venue.city + ", " + data[i].venue.region;
+                        var tickets = "";
+                        var date = data[i].datetime.substring(5, 7) + "/" + data[i].datetime.substring(8, 10) + "/" + data[i].datetime.substring(2, 4)
+                        if(data[i].ticket_status == "available"){
+                            tickets = "<button class='buyTixBtn btn btn-info' data-url='"+data[i].ticket_url+"'>Buy Tix</button>"
+                        } else {
+                            tickets = "N/A"
+                        }
+                        $("#eventTableBody").append("<tr><td>"+date+"</td><td>"+data[i].artists[0].name+"</td><td>"+data[i].venue.name+"</td><td>"+cityState+"</td><td>"+tickets+"</td></tr>");
+                    };
+                } else {
+                    $("#resultInfo").attr("style", "display: initial");
+                    $("#resultInfo").html("No Events found in this area. Try increasing the radius");
+                }
+
+            },
+            error: function(error){
+                console.log(error);
+            },
+        });
+    };
     $("body").on("click", "#submitVenue", submitVenue);
+    $("body").on("tap", "#submitVenue", submitVenue);
     // direct inputs to findVenues
     function submitVenue(){
         var state = $("#stateInput").val();
@@ -230,7 +303,7 @@ jQuery(document).ready(function(){
         var rad = radius;
         if(radius == "") rad = "0";
         $("#addressStorage").html("");
-        url = "https://crossorigin.me/http://api.bandsintown.com/events/search.json?page=1&per_page=100&location="+locale+"&radius="+rad+"&app_id=muskick35";
+        url = "https://crossorigin.me/http://api.bandsintown.com/events/search.json?page=1&per_page=50&location="+locale+"&radius="+rad+"&app_id=muskick35";
         $.ajax({
             type: 'GET',
             url: url,
@@ -291,13 +364,36 @@ jQuery(document).ready(function(){
             }
         });
     };
+    $("body").on("click", "#searchVenue", submitVenueSearch);
+    $("body").on("tap", "#searchVenue", submitVenueSearch);
+    function submitVenueSearch(){
+        if($("#venueInput").val() == "") return;
+        searchVenues($("#venueInput").val());
+        $(".inputBox").val("");
+    }
+    function searchVenues(input){
+        url = "https://crossorigin.me/http://api.bandsintown.com/venues/search.json?query="+input+"&app_id=muskick35";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'JSON',
+            success: function(data){
+                console.log(data);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
     // listener for the type ahead responses
-    $(document).on("click", ".dropThis", function(){
+    $("body").on("click", ".dropThis", selectDropDown);
+    $("body").on("tap", ".dropThis", selectDropDown);
+    function selectDropDown(){
         debugger;
         var bandName = $(this).data("artist");
         searchByArtist(bandName);
         $("#artistDropDown").attr("style", "display: none");
-    });
+    };
     // use backToSearch class for buttons that return the search screen
     $("body").on("click", ".backToSearch", function(){
         $("#pageDirectory").css("display", "none");
@@ -334,12 +430,12 @@ jQuery(document).ready(function(){
         } else {
             $(".backSwitch").css("background-image", "url('purple.jpg')");
             $(".wrapper").css("background-image", "url('dark.jpg')");
-            $(".blackBack").css("color", "gray");3
+            $(".blackBack").css("color", "gray");
             $(".blackBack").css("background-color", "black");
             $(".pageIndexBtn").css("background-color", "purple");
             $("#muskickHeader").attr("src", "label.jpg");
             // $("#main-header").text("MUSKICK ON");
-        }
+        };
     });
     // strobe the light switch
     $("#strobeSwitch").click(function(){
@@ -354,5 +450,3 @@ jQuery(document).ready(function(){
         }
     });
 });
-
-     

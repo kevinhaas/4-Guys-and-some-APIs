@@ -9,8 +9,11 @@ Week 8 project demonstrating usage of third-party APIs and libraries. Works best
 ##APIs used
 
 * Firebase
-* JamBase
+* BandsInTown
 * OAuth.io
+* Spotify
+* Doorbell
+
 
 ##Libraries/frameworks used
 

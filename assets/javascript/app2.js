@@ -21,9 +21,9 @@
         }
     }
 
-    //load last 50 messages, limited to last day
+    //load last 50 messages, limited to last day)
     //http://stackoverflow.com/questions/24312783/firebase-child-added-without-loading-all-data-first
-    chatbase.startAt(moment().subtract(1,"day").unix()).limitToLast(50).on('child_added',function(childSnapshot){
+    chatbase.startAt(moment().subtract(3,"day").valueOf()).limitToLast(50).on('child_added',function(childSnapshot){
         var authelement="";
         if(childSnapshot.val().authservice != false){
             authelement = $("<sup/>").append($("<a/>").text("(" + childSnapshot.val().authservice +")")

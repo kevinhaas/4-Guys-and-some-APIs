@@ -130,7 +130,7 @@
                         </div>
                         <span class="locationSI inputLabel" style="display: none">
                           <button class="btn btn-info buttonText" id="submitVenue" data-target="venue">Venues <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> 
-                          <!--<button class="btn btn-info buttonText" id="submitEvents" data-target="location">Events <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                          <button class="btn btn-info buttonText" id="submitEvents" data-target="location">Events <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </span>
                       </div>
                     </div>
@@ -255,6 +255,24 @@
                   </tbody>
               </table>
           </div>
+
+<div class="resultSection blackBack" id="eventList" style="display: none">
+            <table class="table table-bordered table-hover">
+                  <thead class="purpleBack backSwitch">
+                      <tr>
+                          <th>Date</th>
+                          <th>Artist</th>
+                          <th>Venue</th>
+                          <th>City, State</th>
+                          <th>Tickets</th>
+                      </tr>
+                  </thead>
+                  <tbody id="eventTableBody" class="blackBack">
+
+                  </tbody>
+              </table>
+          </div>
+
         </div> 
       </div>
       <div class="row"><div class="col-md-12 col-sm-12 col-lg-12">

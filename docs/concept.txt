@@ -18,7 +18,7 @@ Concept
 
 Requirements
 --------------------
-1. Must Contain at least 2 Apis - Jambase, Twitter, Spotify and OAuth
+1. Must Contain at least 2 Apis - BandsinTown, Spotify, OAuth, Doorbell and Firebase
 
 2. One New library or tech - jQuery UI
 
@@ -34,17 +34,19 @@ Ideas
 --------------------
 - 3rd party auth comment section
 
-- previous searches
-
-- change theme button on the bottom. dark/light theme?
+- autocomplete for search
 
 - button to purchase tickets to show. link to venue site page.
 
 - poll/feedback on the bottom or on a seperate page?
 
-- nav bar with site info section inlcuding APIs used and links to the git repo
+- nav bar with theme switch and jame's logo, maybe twitter login
 
-- credits page
+- previous searches
+
+- foot with logos for API used
+
+- credits page with out info and contact me listed
 
 - welcome back user message. make it into a homepage?
 
@@ -54,5 +56,5 @@ Implemented
 --------------------
 - recommends other shows if the selected artist doesn't have any upcoming dates
 - theme button
-- user auth with twitter
-
+- twitter login with Oauth
+- utilized "web scraping" to grab the venue address when available
