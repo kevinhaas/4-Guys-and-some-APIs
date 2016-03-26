@@ -433,6 +433,8 @@ jQuery(document).ready(function(){
             $(".wrapper").css("background-image", "url('assets/images/light.jpg')");
             $("#muskickHeader").attr("src", "assets/images/label2.jpg");
             $("#switchPic").attr("src", "assets/images/switch2.jpg");
+            $("#submit").css("background-color", "#5bc0de");
+            $("#sendMsgBtn").css("background-color", "#5bc0de")
             // $("#main-header").text("MUSKICK OFF");
         } else {
             $(".backSwitch").css("background-image", "url('assets/images/purple.jpg')");
@@ -442,6 +444,8 @@ jQuery(document).ready(function(){
             $(".pageIndexBtn").css("background-color", "purple");
             $("#muskickHeader").attr("src", "assets/images/label.jpg");
             $("#switchPic").attr("src", "assets/images/switch1.jpg");
+            $("#submit").css("background-color", "#990007");
+            $("#sendMsgBtn").css("background-color", "#990007")
             // $("#main-header").text("MUSKICK ON");
         };
     });

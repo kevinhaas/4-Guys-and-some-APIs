@@ -71,11 +71,33 @@ html, body {
 }
 /*Background Image*/
 .wrapper {
-	position: inherit;
+  background-image: url('../images/dark.jpg');
   margin: 0 auto;
   background-repeat: no-repeat;
   background-size: contain;
   min-height: 900px;
+}
+
+#searchContainer {
+  border:thin grey solid;
+  border-radius: 20px 20px 20px 20px;
+  background-color: black;
+  margin-bottom: 15px;
+}
+
+#searchPanel {
+  border:thin grey solid;
+  border-radius: 20px 20px 0px 0px;
+}
+
+/*#searchContainer {
+    border:thin grey solid;
+    border-radius: 20px 20px 20px 20px;
+}*/
+
+#searchDiv {
+    border:thin grey solid;
+    border-radius: 20px 20px 20px 20px;
 }
 
 #searchTitle {
@@ -93,102 +115,6 @@ html, body {
 #endDateInput {
     width: 50%;
 }
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* END RESET */
-
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.3em; }
-h4 { font-size: 1em; }
-h5 { font-size: 0.8em; }
-h6 { font-size: 0.7em; }
-
-h1,h2,h3,h4,h5,h6 {
-  font-weight: normal;
-  font-style: normal;
-}
-html, body {
-  height: 100%;
-  width: 100%;
-}
-#wrapperWrapper{
-	position: inherit;
-	margin: auto;
-	background-color: black;
-}
-/*Background Image*/
-.wrapper {
-  margin: 0 auto;
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-height: 900px;
-}
-
-#searchTitle {
-    text-align: center;
-}
-
-.inputBox {
-    margin-bottom: 10px;
-}
-
-#startDateInput {
-    width: 50%;
-}
-
-#endDateInput {
-    width: 50%;
-}
-
 
 /* eugene css*/
 
@@ -205,6 +131,15 @@ html, body {
 	word-wrap: break-word;
 }
 
+#sendMsgBtn {
+    background-color: #990007;
+    border:thin grey solid;
+}
+
+#setNameBtn {
+    color: #ffffff
+}
+
 #chatbox-input-container {
 	display:flex; 
 	font-size: 18px
@@ -212,6 +147,9 @@ html, body {
 
 #username {
 	font-weight:bold;
+    position: relative;
+    margin-top: 5px;
+    margin-right: 10px;
 }
 
 #authentication {
@@ -314,7 +252,23 @@ html, body {
 		}
 		#submit{
 			margin-top: 35px;
+            background-color: #990007;
+            border:thin grey solid;
 		}
+        #submitVenue {
+            top: 5%;
+            background-color: #990007;
+            border:thin grey solid;
+        }
+        #submitEvents {
+            background-color: #990007;
+            border:thin grey solid;
+        }
+        #locationSearchDiv {
+            position: relative;
+            top: 56px;
+            left: 50px;
+        }
 		.mainBandImage{
 			max-height: 365px;
 			max-width: 400px;
@@ -427,6 +381,9 @@ html, body {
             font-size: 24px;
             background-color: #f8f8f8;
         }
+        #navBarDiv {
+            margin-bottom: 10%;
+        }
         #textLogo {
             margin-top: -10px;
         }
@@ -486,12 +443,14 @@ html, body {
             background-color: #b9b9b9;
             color: #ffffff;
             height: 150px;
+            margin-top: 2%;
         }
         #logoDiv {
             height: 50px;
             position: relative;
-            left: 16%;
+            /*left: 16%;*/
             margin-top: 4%;
+            text-align: center;
         }
         .logo {
             max-height: 100px;
@@ -499,14 +458,20 @@ html, body {
         #spotifyLogo {
             
         }
+        #copyRight {
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+        }
         #badgeDiv {
-            margin-top: 7%;
+            margin-top: 20%;
         }
         
 		@media screen and (max-width: 1200px){
 			#spotifyDiv{
 				width: 306px;
 			}
+             #footer {
+                display: none;
+            }
 			.badge{
 				display: none;
 			}
@@ -517,17 +482,32 @@ html, body {
 			#spotResults{
 				max-height: 345px;
 			}
+            #navBarDiv {
+                display: none;
+            }
 		}
 		@media screen and (max-width: 767px){
+            #footer {
+                display: none;
+            }
 			#spotifyDiv{
 				display: none;
 			}
+            #navBarDiv {
+                display: none;
+            }
 		}
 		@media screen and (max-width: 1000px){
 			.mainBandImage{
 				max-height: 240px;
 				max-width: 240px;
 			}
+            #navBarDiv {
+                display: none;
+            }
+             #footer {
+                display: none;
+            }
 			#spotResults{
 				max-height: 310px;
 			}
