@@ -386,14 +386,20 @@ jQuery(document).ready(function(){
         });
     }
     // listener for the type ahead responses
-    $("body").on("click", ".dropThis", selectDropDown);
-    $("body").on("tap", ".dropThis", selectDropDown);
-    function selectDropDown(){
-        debugger;
+    $("body").on("click", ".dropThis", function (){
         var bandName = $(this).data("artist");
-        searchByArtist(bandName);
+        var start = $("#startDateInput").val()
+        var end = $("#endDateInput").val()
+        searchByArtist(bandName, start, end);
         $("#artistDropDown").attr("style", "display: none");
-    };
+    });
+    $("body").on("tap", ".dropThis", function (){
+        var bandName = $(this).data("artist");
+        var start = $("#startDateInput").val()
+        var end = $("#endDateInput").val()
+        searchByArtist(bandName, start, end);
+        $("#artistDropDown").attr("style", "display: none");
+    });
     // use backToSearch class for buttons that return the search screen
     $("body").on("click", ".backToSearch", function(){
         $("#pageDirectory").css("display", "none");
