@@ -1,6 +1,6 @@
 # Muskick
 
-##About
+### Kick up your local music search by finding related artists, browsing top tracks, chatting with other fans and purchasing your tickets all in one place
 
 Muskick, a music search engine with a kick.
 
