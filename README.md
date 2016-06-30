@@ -1,26 +1,26 @@
 # Muskick
 Week 8 Group Project
 
-### Kick up your local music search by finding related artists, browsing top tracks, chatting with other fans and purchasing your tickets all in one place
+### Kick up your local music search!
 
 #### Features:
-* 
+* Search for local concerts by band, location or venue
+* Purchase tickets
+* Find related artists and their tour dates
+* Browse top tracks and listen to samples
+* Light/Dark theme
+* Chat with other users - Login with your Twitter account using OAuth
 
-##APIs used
-
-* Firebase
-* BandsInTown
-* OAuth.io
-* Spotify
-* Doorbell
-
-
-##Libraries/frameworks used
-
-* Bootstrap
-* Chart.js
-* Firebase.js
-* JQuery
+Utilizes:
+* JavaScript
+* jQuery
 * JQueryUI
-* Moment.js
+* Bootstrap
+* Firebase
+* OAuth
+* Chart.js
+* Doorbell.io
 
+APIs:
+* BandsInTown
+* Spotify
