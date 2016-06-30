@@ -14,7 +14,7 @@ Week 8 Group Project
 Utilizes:
 * JavaScript
 * jQuery
-* JQueryUI
+* jQueryUI
 * Bootstrap
 * Firebase
 * OAuth
