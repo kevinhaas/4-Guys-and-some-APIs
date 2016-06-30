@@ -16,6 +16,7 @@ Utilizes:
 * jQuery
 * jQueryUI
 * Bootstrap
+* Media Queries
 * Firebase
 * OAuth
 * Chart.js
